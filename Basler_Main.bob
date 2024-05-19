@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Fluorescent Screen Operator GUI</name>
+  <macros>
+    <HCAM>CAM</HCAM>
+    <HDEVICE>FSIA</HDEVICE>
+    <HIMAGE>IMAGE</HIMAGE>
+    <HPROC>PROC</HPROC>
+    <HROI>ROI</HROI>
+    <HSTATS>STATS</HSTATS>
+    <HTRANS>TRANS</HTRANS>
+    <VCAM>CAM</VCAM>
+    <VDEVICE>FSIA</VDEVICE>
+    <VIMAGE>IMAGE</VIMAGE>
+    <VPROC>PROC</VPROC>
+    <VROI>ROI</VROI>
+    <VSTATS>STATS</VSTATS>
+    <VTRANS>TRANS</VTRANS>
+  </macros>
+  <width>1095</width>
+  <height>910</height>
+  <background_color>
+    <color red="237" green="236" blue="235">
+    </color>
+  </background_color>
+  <actions>
+  </actions>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container Template</name>
+    <file>Basler_ColorImagePanel.bob</file>
+    <x>360</x>
+    <y>85</y>
+    <width>671</width>
+    <height>547</height>
+    <actions>
+    </actions>
+    <border_color>
+      <color name="IO Border" red="215" green="215" blue="215">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="tabs" version="2.0.0">
+    <name>Image Panel</name>
+    <tabs>
+      <tab>
+        <name>Acquire</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_CamPanel.opi</file>
+            <width>316</width>
+            <height>571</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Save File</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_SavePanel.opi</file>
+            <width>316</width>
+            <height>636</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Camera Info</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_InfoPanel.opi</file>
+            <x>5</x>
+            <width>300</width>
+            <height>511</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Links</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_ADLinkPanel.opi</file>
+            <x>5</x>
+            <width>300</width>
+            <height>511</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>105</y>
+    <width>321</width>
+    <height>671</height>
+    <background_color>
+      <color name="IO Foreground" red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <tab_height>10</tab_height>
+    <actions>
+    </actions>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Title Banner</name>
+    <text>Basler CCD Camera - $(DEVICE)</text>
+    <width>1056</width>
+    <height>45</height>
+    <font>
+      <font name="STAR-CS" family="sans" style="REGULAR" size="23.762376237623762">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="IO Label" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="STAR-CS Beam Diagnostics" red="207" green="151" blue="207">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color name="IO Border" red="215" green="215" blue="215">
+      </color>
+    </border_color>
+  </widget>
+</display>
