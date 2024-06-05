@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-03 17:18:41 by andreamichelotti-->
 <display version="2.0.0">
   <name>Fluorescent Screen Operator GUI</name>
   <macros>
@@ -83,7 +84,7 @@
         <children>
           <widget type="embedded" version="2.0.0">
             <name>Vcam panel template</name>
-            <file>Basler_InfoPanel.opi</file>
+            <file>Basler_InfoPanel.bob</file>
             <x>5</x>
             <width>300</width>
             <height>511</height>
@@ -123,6 +124,7 @@
       <color name="IO Foreground" red="0" green="0" blue="0">
       </color>
     </background_color>
+    <active_tab>2</active_tab>
     <tab_height>10</tab_height>
     <actions>
     </actions>
