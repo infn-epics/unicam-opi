@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
+<display version="2.0.0">
+  <width>1280</width>
+  <height>1024</height>
+  <background_color>
+    <color name="IO Grid" red="215" green="215" blue="215">
+    </color>
+  </background_color>
+  <actions>
+  </actions>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="group" version="3.0.0">
+    <name>Panel 2</name>
+    <x>5</x>
+    <y>10</y>
+    <height>561</height>
+    <style>3</style>
+    <foreground_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="240" green="240" blue="240">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <widget type="group" version="3.0.0">
+      <name>Panel 2</name>
+      <x>16</x>
+      <y>158</y>
+      <width>270</width>
+      <height>25</height>
+      <style>3</style>
+      <foreground_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </foreground_color>
+      <line_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="240" green="240" blue="240">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <widget type="group" version="3.0.0">
+        <name>Controls Grouping Container_1</name>
+        <y>12</y>
+        <width>270</width>
+        <height>1</height>
+        <style>3</style>
+        <font>
+          <font name="IO Normal" family="sans" style="REGULAR" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </foreground_color>
+        <line_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="IO OutputPV Bg" red="121" green="123" blue="126">
+          </color>
+        </background_color>
+        <actions>
+        </actions>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_124</name>
+        <text>Status</text>
+        <x>87</x>
+        <width>96</width>
+        <height>25</height>
+        <font>
+          <font name="IO Title" family="sans" style="BOLD" size="13.861386138613861">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Label" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <transparent>false</transparent>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+      </widget>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>Panel 2_2</name>
+      <y>425</y>
+      <height>136</height>
+      <style>3</style>
+      <foreground_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </foreground_color>
+      <line_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="240" green="240" blue="240">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_7</name>
+        <text>Exposure Time</text>
+        <x>20</x>
+        <y>75</y>
+        <width>119</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="checkbox" version="2.0.0">
+        <name>Check Box Template</name>
+        <pv_name>$(DEVICE):$(HW):GammaEnable</pv_name>
+        <label>Gamma</label>
+        <x>20</x>
+        <y>40</y>
+        <width>86</width>
+        <height>25</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <actions>
+        </actions>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner Template_1</name>
+        <pv_name>$(DEVICE):$(HW):Gamma</pv_name>
+        <x>150</x>
+        <y>35</y>
+        <width>71</width>
+        <height>30</height>
+        <visible>false</visible>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <format>0</format>
+        <precision>3</precision>
+        <foreground_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO InputPV Bg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <rules>
+          <rule name="Rule" prop_id="visible" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>true</value>
+            </exp>
+            <pv_name>$(DEVICE):$(HW):GammaEnable</pv_name>
+          </rule>
+        </rules>
+        <tooltip>$(pv_name)
+$(pv_value)
+Limits: [0, 3.9]</tooltip>
+        <maximum>3.9</maximum>
+        <limits_from_pv>false</limits_from_pv>
+        <increment>0.1</increment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_6</name>
+        <text>Raw Gain</text>
+        <x>20</x>
+        <y>5</y>
+        <width>75</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner Template_2</name>
+        <pv_name>$(DEVICE):$(CAM):AcquireTime</pv_name>
+        <x>150</x>
+        <y>70</y>
+        <width>71</width>
+        <height>30</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <format>0</format>
+        <precision>3</precision>
+        <foreground_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO InputPV Bg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <tooltip>$(pv_name)
+$(pv_value)
+Limits: [0.014-0.039]</tooltip>
+        <minimum>0.001</minimum>
+        <maximum>0.039</maximum>
+        <limits_from_pv>false</limits_from_pv>
+        <increment>0.001</increment>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner Template</name>
+        <pv_name>$(DEVICE):$(CAM):Gain</pv_name>
+        <x>150</x>
+        <width>72</width>
+        <height>30</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <format>0</format>
+        <precision>3</precision>
+        <foreground_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO InputPV Bg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <tooltip>$(pv_name)
+$(pv_value)
+Limits: [320,1000]</tooltip>
+        <minimum>320.0</minimum>
+        <maximum>1000.0</maximum>
+        <limits_from_pv>false</limits_from_pv>
+        <increment>10.0</increment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template</name>
+        <text>s</text>
+        <x>225</x>
+        <y>80</y>
+        <width>7</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="IO Text Fg" red="0" green="32" blue="92">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update</name>
+        <pv_name>$(DEVICE):$(CAM):AcquireTime_RBV</pv_name>
+        <x>240</x>
+        <y>70</y>
+        <width>46</width>
+        <height>31</height>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+        <wrap_words>false</wrap_words>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template</name>
+        <text>s</text>
+        <x>290</x>
+        <y>80</y>
+        <width>7</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="IO Text Fg" red="0" green="32" blue="92">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_1</name>
+        <pv_name>$(DEVICE):$(HW):Gamma_RBV</pv_name>
+        <x>240</x>
+        <y>35</y>
+        <width>46</width>
+        <height>30</height>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <vertical_alignment>1</vertical_alignment>
+        <wrap_words>false</wrap_words>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_1</name>
+        <pv_name>$(DEVICE):$(CAM):Gain_RBV</pv_name>
+        <x>240</x>
+        <width>46</width>
+        <height>30</height>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <precision>0</precision>
+        <vertical_alignment>1</vertical_alignment>
+        <wrap_words>false</wrap_words>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>Panel 2_3</name>
+      <x>17</x>
+      <y>195</y>
+      <width>283</width>
+      <height>160</height>
+      <style>3</style>
+      <foreground_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </foreground_color>
+      <line_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="240" green="240" blue="240">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <widget type="label" version="2.0.0">
+        <name>Label Template</name>
+        <text>Image Counter</text>
+        <x>14</x>
+        <y>5</y>
+        <width>120</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_4</name>
+        <text>Dropped Frames</text>
+        <y>75</y>
+        <width>133</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update Template_4</name>
+        <pv_name>$(DEVICE):$(CAM):StatusMessage_RBV</pv_name>
+        <x>3</x>
+        <y>131</y>
+        <width>279</width>
+        <height>28</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <format>6</format>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_width>1</border_width>
+        <border_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update Template_3</name>
+        <pv_name>$(DEVICE):$(CAM):ARFrameFailures</pv_name>
+        <x>148</x>
+        <y>71</y>
+        <width>133</width>
+        <height>28</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_width>1</border_width>
+        <border_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update Template</name>
+        <pv_name>$(DEVICE):$(CAM):ArrayCounter_RBV</pv_name>
+        <x>148</x>
+        <y>1</y>
+        <width>133</width>
+        <height>28</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_width>1</border_width>
+        <border_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update Template_2</name>
+        <pv_name>$(DEVICE):$(CAM):ArrayRate_RBV</pv_name>
+        <x>148</x>
+        <y>36</y>
+        <width>133</width>
+        <height>28</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <precision>0</precision>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_width>1</border_width>
+        <border_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_5</name>
+        <text>Message</text>
+        <y>110</y>
+        <width>70</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_3</name>
+        <text>Image Rate</text>
+        <x>41</x>
+        <y>40</y>
+        <width>93</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>Panel 2_4</name>
+      <x>22</x>
+      <width>278</width>
+      <height>145</height>
+      <style>3</style>
+      <foreground_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </foreground_color>
+      <line_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="240" green="240" blue="240">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <widget type="label" version="2.0.0">
+        <name>Label Template_1</name>
+        <text>Camera State</text>
+        <x>24</x>
+        <y>6</y>
+        <width>111</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>Start Button_2</name>
+        <actions execute_as_one="true">
+          <action type="write_pv">
+            <pv_name>$(DEVICE):$(CAM):Acquire</pv_name>
+            <value>0</value>
+            <description>WritePV</description>
+          </action>
+          <action type="write_pv">
+            <pv_name>$(DEVICE):$(CAM):ArrayCallbacks</pv_name>
+            <value>0</value>
+            <description>WritePV</description>
+          </action>
+        </actions>
+        <text>Stop</text>
+        <x>143</x>
+        <y>105</y>
+        <width>135</width>
+        <height>40</height>
+        <visible>false</visible>
+        <font>
+          <font family="Sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="visibility" prop_id="visible" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>true</value>
+            </exp>
+            <pv_name>$(DEVICE):$(CAM):Acquire_RBV</pv_name>
+          </rule>
+        </rules>
+        <tooltip></tooltip>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update Template</name>
+        <pv_name>$(DEVICE):$(CAM):DetectorState_RBV</pv_name>
+        <x>144</x>
+        <y>1</y>
+        <width>133</width>
+        <height>28</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_width>1</border_width>
+        <border_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>Start Button</name>
+        <actions execute_as_one="true">
+          <action type="write_pv">
+            <pv_name>$(DEVICE):$(CAM):ArrayCallbacks</pv_name>
+            <value>1</value>
+            <description>WritePV</description>
+          </action>
+          <action type="write_pv">
+            <pv_name>$(DEVICE):$(CAM):Acquire</pv_name>
+            <value>1</value>
+            <description>WritePV</description>
+          </action>
+          <action type="write_pv">
+            <pv_name>$(DEVICE):$(CAM):ArrayCounter</pv_name>
+            <value>0</value>
+            <description>WritePV</description>
+          </action>
+        </actions>
+        <text>Start</text>
+        <x>143</x>
+        <y>105</y>
+        <width>135</width>
+        <height>40</height>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="visibility" prop_id="visible" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>false</value>
+            </exp>
+            <pv_name>$(DEVICE):$(CAM):Acquire_RBV</pv_name>
+          </rule>
+        </rules>
+        <tooltip></tooltip>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Template</name>
+        <text>Acquisition Mode</text>
+        <y>40</y>
+        <width>135</width>
+        <height>19</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="spinner" version="2.0.0">
+        <name>Spinner Template_3</name>
+        <pv_name>$(DEVICE):$(CAM):NumImages</pv_name>
+        <x>143</x>
+        <y>70</y>
+        <width>135</width>
+        <height>30</height>
+        <visible>false</visible>
+        <font>
+          <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <format>0</format>
+        <precision>3</precision>
+        <foreground_color>
+          <color name="IO PV OFF" red="77" green="77" blue="77">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO InputPV Bg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <rules>
+          <rule name="Rule" prop_id="visible" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>true</value>
+            </exp>
+            <pv_name>$(DEVICE):$(CAM):ImageMode</pv_name>
+          </rule>
+        </rules>
+        <maximum>1.0E27</maximum>
+        <limits_from_pv>false</limits_from_pv>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label Orientation_17</name>
+        <text># Images</text>
+        <x>56</x>
+        <y>75</y>
+        <width>77</width>
+        <height>19</height>
+        <visible>false</visible>
+        <font>
+          <font family="Sans" style="REGULAR" size="11.881188118811881">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Background" red="255" green="255" blue="205">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+        <auto_size>true</auto_size>
+        <actions>
+        </actions>
+        <rules>
+          <rule name="visibility" prop_id="visible" out_exp="false">
+            <exp bool_exp="pv0==1">
+              <value>true</value>
+            </exp>
+            <pv_name>$(DEVICE):$(CAM):ImageMode</pv_name>
+          </rule>
+        </rules>
+        <border_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="combo" version="2.0.0">
+        <name>Combo</name>
+        <pv_name>$(DEVICE):$(CAM):ImageMode</pv_name>
+        <x>143</x>
+        <y>35</y>
+        <width>135</width>
+        <height>32</height>
+        <font>
+          <font family="Sans" style="REGULAR" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO OutputPV Fg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <actions>
+        </actions>
+      </widget>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>Panel 2_5</name>
+      <x>16</x>
+      <y>389</y>
+      <width>270</width>
+      <height>25</height>
+      <style>3</style>
+      <foreground_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </foreground_color>
+      <line_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="240" green="240" blue="240">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <widget type="group" version="3.0.0">
+        <name>Controls Grouping Container_1</name>
+        <y>12</y>
+        <width>270</width>
+        <height>1</height>
+        <style>3</style>
+        <font>
+          <font name="IO Normal" family="sans" style="REGULAR" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </foreground_color>
+        <line_color>
+          <color name="IO Border" red="215" green="215" blue="215">
+          </color>
+        </line_color>
+        <background_color>
+          <color name="IO OutputPV Bg" red="121" green="123" blue="126">
+          </color>
+        </background_color>
+        <actions>
+        </actions>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_124</name>
+        <text>Settings</text>
+        <x>80</x>
+        <width>110</width>
+        <height>25</height>
+        <font>
+          <font name="IO Title" family="sans" style="BOLD" size="13.861386138613861">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Label" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO Grid" red="215" green="215" blue="215">
+          </color>
+        </background_color>
+        <transparent>false</transparent>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+      </widget>
+    </widget>
+  </widget>
+</display>
