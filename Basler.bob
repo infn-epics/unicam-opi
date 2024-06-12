@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
+<display version="2.0.0">
+  <name>Basler CCD Camera</name>
+  <macros>
+    <CAM>CAM1</CAM>
+    <IMAGE>NDAR1</IMAGE>
+    <TIFF>TIFF1</TIFF>
+    <JPEG>JPEG1</JPEG>
+    <STATS>STATS1</STATS>
+    <HW>HW</HW>
+  </macros>
+  <width>1029</width>
+  <height>796</height>
+  <background_color>
+    <color name="IO Grid" red="215" green="215" blue="215">
+    </color>
+  </background_color>
+  <actions>
+  </actions>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container Template</name>
+    <file>Basler_Main.opi</file>
+    <width>1056</width>
+    <height>786</height>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="ClearOPIRule" prop_id="opi_file" out_exp="false">
+        <exp bool_exp="true">
+          <value></value>
+        </exp>
+        <exp bool_exp="false">
+          <value></value>
+        </exp>
+        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+      </rule>
+      <rule name="SetOPIRule" prop_id="opi_file" out_exp="false">
+        <exp bool_exp="true">
+          <value>Basler_Main.opi</value>
+        </exp>
+        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+      </rule>
+    </rules>
+    <scripts>
+      <script file="Scripts/Device2Macro.js">
+        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+      </script>
+    </scripts>
+    <border_color>
+      <color name="IO Border" red="215" green="215" blue="215">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Device prefix combo</name>
+    <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+    <x>195</x>
+    <y>65</y>
+    <width>196</width>
+    <height>32</height>
+    <font>
+      <font family="Sans" style="BOLD" size="10.891089108910892">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="IO Foreground" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="IO OutputPV Fg" red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <actions>
+    </actions>
+    <scripts>
+      <script file="Scripts/DeviceSelectDefault.js">
+        <pv_name>=1</pv_name>
+      </script>
+    </scripts>
+    <items>
+      <item>INJGUN01:YSC</item>
+      <item>FLGGUN01:YSC</item>
+      <item>FLGLIN01:YSC</item>
+      <item>FLGLIN02:YSC</item>
+      <item>FLGTRL01:YSC</item>
+      <item>FLGDGL01:YSC</item>
+      <item>FLGDGL02:YSC</item>
+      <item>FLGIPL01:YSC</item>
+      <item>INTIPL01:YSC</item>
+      <item>FLGDUM01:YSC</item>
+      <item>FLGHEL01:YSC</item>
+      <item>FLGHEL02:YSC</item>
+      <item>FLGHEL03:YSC</item>
+      <item>INTHEL01:YSC</item>
+      <item>FLGHEL04:YSC</item>
+      <item>FLGSTR01:YSC</item>
+    </items>
+    <items_from_pv>false</items_from_pv>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_85</name>
+    <text>Camera Selection</text>
+    <x>20</x>
+    <y>71</y>
+    <width>176</width>
+    <height>25</height>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="IO Label" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+</display>
