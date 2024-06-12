@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <!--Saved on 2024-06-11 17:56:28 by Alex-->
-=======
-<!--Saved on 2024-06-06 20:32:44 by andreamichelotti-->
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
 <display version="2.0.0">
   <width>1280</width>
   <height>1024</height>
@@ -93,13 +89,8 @@
       <text>Capt. Status</text>
       <x>2</x>
       <y>477</y>
-<<<<<<< HEAD
       <width>63</width>
       <height>17</height>
-=======
-      <width>97</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -127,13 +118,8 @@
       <text>Save Message</text>
       <x>1</x>
       <y>547</y>
-<<<<<<< HEAD
       <width>74</width>
       <height>17</height>
-=======
-      <width>114</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -157,11 +143,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:Capture_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):Capture_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>107</x>
       <y>473</y>
       <width>180</width>
@@ -193,11 +175,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:WriteMessage</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):WriteMessage</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>2</x>
       <y>571</y>
       <width>285</width>
@@ -230,11 +208,7 @@
       <name>Action Button Template_3</name>
       <actions execute_as_one="true">
         <action type="write_pv">
-<<<<<<< HEAD
           <pv_name>$(DEVICE):$(CAM):TIFF1:Capture</pv_name>
-=======
-          <pv_name>$(DEVICE):$(TIFF):Capture</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
           <value>1</value>
           <description>WritePV</description>
         </action>
@@ -262,11 +236,7 @@
       <name>Action Button Template_3</name>
       <actions execute_as_one="true">
         <action type="write_pv">
-<<<<<<< HEAD
           <pv_name>$(DEVICE):$(CAM):TIFF1:Capture</pv_name>
-=======
-          <pv_name>$(DEVICE):$(TIFF):Capture</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
           <value>0</value>
           <description>WritePV</description>
         </action>
@@ -295,13 +265,8 @@
       <text>Save Status</text>
       <x>5</x>
       <y>516</y>
-<<<<<<< HEAD
       <width>60</width>
       <height>17</height>
-=======
-      <width>94</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -325,11 +290,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:WriteStatus</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):WriteStatus</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>107</x>
       <y>512</y>
       <width>180</width>
@@ -412,11 +373,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Input Template_2</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FileName</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FileName</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>88</x>
       <y>117</y>
       <width>198</width>
@@ -444,13 +401,8 @@
       <text>File Name</text>
       <x>1</x>
       <y>120</y>
-<<<<<<< HEAD
       <width>53</width>
       <height>17</height>
-=======
-      <width>79</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -474,11 +426,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Input Template_3</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FileNumber</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FileNumber</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>88</x>
       <y>192</y>
       <width>198</width>
@@ -506,13 +454,8 @@
       <text>#File</text>
       <x>42</x>
       <y>195</y>
-<<<<<<< HEAD
       <width>25</width>
       <height>17</height>
-=======
-      <width>39</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -537,11 +480,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Input Template_2</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:NumCapture</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):NumCapture</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>88</x>
       <y>287</y>
       <width>198</width>
@@ -569,13 +508,8 @@
       <text>#Images</text>
       <x>7</x>
       <y>290</y>
-<<<<<<< HEAD
       <width>45</width>
       <height>17</height>
-=======
-      <width>72</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -600,11 +534,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Text Input Template_6</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FilePath</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FilePath</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>88</x>
       <y>42</y>
       <width>198</width>
@@ -632,13 +562,8 @@
       <text>Save Path</text>
       <x>1</x>
       <y>45</y>
-<<<<<<< HEAD
       <width>51</width>
       <height>17</height>
-=======
-      <width>79</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -665,13 +590,8 @@
       <text>Last File Saved</text>
       <x>1</x>
       <y>412</y>
-<<<<<<< HEAD
       <width>77</width>
       <height>17</height>
-=======
-      <width>118</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -695,11 +615,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FullFileName_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FullFileName_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>2</x>
       <y>433</y>
       <width>285</width>
@@ -734,13 +650,8 @@
       <text>#Image</text>
       <x>9</x>
       <y>380</y>
-<<<<<<< HEAD
       <width>40</width>
       <height>17</height>
-=======
-      <width>64</width>
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -764,11 +675,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:NumCaptured_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):NumCaptured_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>79</x>
       <y>376</y>
       <width>98</width>
@@ -799,11 +706,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_5</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:NumCapture_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):NumCapture_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>189</x>
       <y>376</y>
       <width>98</width>
@@ -839,11 +742,7 @@
       <x>180</x>
       <y>381</y>
       <width>5</width>
-<<<<<<< HEAD
       <height>17</height>
-=======
-      <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -867,11 +766,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FilePath_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FilePath_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>87</x>
       <y>76</y>
       <width>200</width>
@@ -903,11 +798,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_1</name>
-<<<<<<< HEAD
       <pv_name>$(DEVICE):$(CAM):TIFF1:FileName_RBV</pv_name>
-=======
-      <pv_name>$(DEVICE):$(TIFF):FileName_RBV</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <x>87</x>
       <y>151</y>
       <width>200</width>

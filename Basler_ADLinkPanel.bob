@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <!--Saved on 2024-06-12 16:36:59 by Alex-->
-=======
-<!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
 <display version="2.0.0">
   <width>1280</width>
   <height>1024</height>
@@ -47,13 +43,8 @@ WARNING: Changing settings in
 screens below may make
 the system unusable!</text>
       <y>35</y>
-<<<<<<< HEAD
-      <width>169</width>
-      <height>129</height>
-=======
       <width>249</width>
       <height>133</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <font>
         <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
         </font>
@@ -105,11 +96,7 @@ the system unusable!</text>
       <name>Action Button Template_4</name>
       <actions execute_as_one="true">
         <action type="open_display">
-<<<<<<< HEAD
           <file>genicam/NDFileTIFF.bob</file>
-=======
-          <file>/opt/epics/extensions/ADCore/ADApp/op/opi/autoconvert/NDFileTIFF.opi</file>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
           <macros>
             <P>$(DEVICE):</P>
             <R>$(TIFF):</R>
@@ -119,13 +106,8 @@ the system unusable!</text>
         </action>
       </actions>
       <text>NDFileTIFF</text>
-<<<<<<< HEAD
       <x>20</x>
       <y>280</y>
-=======
-      <x>22</x>
-      <y>285</y>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
       <width>120</width>
       <height>40</height>
       <font>
@@ -146,11 +128,7 @@ the system unusable!</text>
       <name>Action Button Template</name>
       <actions>
         <action type="open_display">
-<<<<<<< HEAD
           <file>genicam/ADBase.bob</file>
-=======
-          <file>/opt/epics/extensions/ADCore/ADApp/op/opi/autoconvert/ADBase.opi</file>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
           <macros>
             <P>$(DEVICE):</P>
             <R>$(CAM):</R>
@@ -206,11 +184,7 @@ the system unusable!</text>
       <name>Action Button Template_6</name>
       <actions>
         <action type="open_display">
-<<<<<<< HEAD
           <file>genicam/NDStdArrays.bob</file>
-=======
-          <file>/opt/epics/extensions/ADCore/ADApp/op/opi/autoconvert/NDStdArrays.opi</file>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
           <macros>
             <P>$(DEVICE):</P>
             <R>$(IMAGE):</R>

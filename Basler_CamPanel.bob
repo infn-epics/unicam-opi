@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<!--Saved on 2024-06-10 15:54:48 by Alex-->
-=======
-<!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
 <display version="2.0.0">
   <width>1280</width>
   <height>1024</height>
@@ -133,13 +128,8 @@
         <text>Exposure Time</text>
         <x>20</x>
         <y>75</y>
-<<<<<<< HEAD
-        <width>77</width>
-        <height>17</height>
-=======
         <width>119</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -163,11 +153,7 @@
       </widget>
       <widget type="checkbox" version="2.0.0">
         <name>Check Box Template</name>
-<<<<<<< HEAD
         <pv_name>$(DEVICE):$(CAM):GammaEnable</pv_name>
-=======
-        <pv_name>$(DEVICE):$(HW):GammaEnable</pv_name>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <label>Gamma</label>
         <x>20</x>
         <y>40</y>
@@ -230,13 +216,8 @@ Limits: [0, 3.9]</tooltip>
         <text>Raw Gain</text>
         <x>20</x>
         <y>5</y>
-<<<<<<< HEAD
         <width>49</width>
         <height>17</height>
-=======
-        <width>75</width>
-        <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -329,11 +310,7 @@ Limits: [320,1000]</tooltip>
         <x>225</x>
         <y>80</y>
         <width>7</width>
-<<<<<<< HEAD
-        <height>16</height>
-=======
         <height>17</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <foreground_color>
           <color name="IO Text Fg" red="0" green="32" blue="92">
           </color>
@@ -378,11 +355,7 @@ Limits: [320,1000]</tooltip>
         <x>290</x>
         <y>80</y>
         <width>7</width>
-<<<<<<< HEAD
-        <height>16</height>
-=======
         <height>17</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <foreground_color>
           <color name="IO Text Fg" red="0" green="32" blue="92">
           </color>
@@ -470,13 +443,8 @@ Limits: [320,1000]</tooltip>
         <text>Image Counter</text>
         <x>14</x>
         <y>5</y>
-<<<<<<< HEAD
-        <width>79</width>
-        <height>17</height>
-=======
         <width>120</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -502,13 +470,8 @@ Limits: [320,1000]</tooltip>
         <name>Label Template_4</name>
         <text>Dropped Frames</text>
         <y>75</y>
-<<<<<<< HEAD
-        <width>88</width>
-        <height>17</height>
-=======
         <width>133</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -652,13 +615,8 @@ Limits: [320,1000]</tooltip>
         <name>Label Template_5</name>
         <text>Message</text>
         <y>110</y>
-<<<<<<< HEAD
-        <width>47</width>
-        <height>17</height>
-=======
         <width>70</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -685,13 +643,8 @@ Limits: [320,1000]</tooltip>
         <text>Image Rate</text>
         <x>41</x>
         <y>40</y>
-<<<<<<< HEAD
-        <width>60</width>
-        <height>17</height>
-=======
         <width>93</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -740,13 +693,8 @@ Limits: [320,1000]</tooltip>
         <text>Camera State</text>
         <x>24</x>
         <y>6</y>
-<<<<<<< HEAD
-        <width>70</width>
-        <height>17</height>
-=======
         <width>111</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -889,13 +837,8 @@ Limits: [320,1000]</tooltip>
         <name>Label Template</name>
         <text>Acquisition Mode</text>
         <y>40</y>
-<<<<<<< HEAD
-        <width>93</width>
-        <height>17</height>
-=======
         <width>135</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
           </font>
@@ -959,13 +902,8 @@ Limits: [320,1000]</tooltip>
         <text># Images</text>
         <x>56</x>
         <y>75</y>
-<<<<<<< HEAD
-        <width>48</width>
-        <height>16</height>
-=======
         <width>77</width>
         <height>19</height>
->>>>>>> 218f1aded013134751d7e271453ead0b699a1fe9
         <visible>false</visible>
         <font>
           <font family="Sans" style="REGULAR" size="11.881188118811881">
