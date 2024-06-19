@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-19 00:57:11 by andreamichelotti-->
+<!--Saved on 2024-06-19 23:31:24 by andreamichelotti-->
 <display version="2.0.0">
   <name>Display</name>
   <width>440</width>
@@ -74,5 +74,22 @@
         <pv_name>$(CAMERA):SizeY_RBV</pv_name>
       </rule>
     </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="open_display">
+        <file>./ADAravis.bob</file>
+        <macros>
+          <P>$(CAMERA):</P>
+          <R></R>
+          <C>$(MODEL=Basler-scA640-70gm)</C>
+        </macros>
+        <target>window</target>
+        <description>Control</description>
+      </action>
+    </actions>
+    <x>340</x>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>
