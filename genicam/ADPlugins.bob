@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-25 15:22:21 by epics-->
+<!--Saved on 2024-06-21 15:13:29 by Alex-->
 <display version="2.0.0">
   <name>ADPlugins</name>
   <x>141</x>
@@ -17,8 +17,8 @@
     <text></text>
     <x>122</x>
     <y>10</y>
-    <width>1</width>
-    <height>40</height>
+    <width>0</width>
+    <height>34</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="30.0">
       </font>
@@ -76,7 +76,8 @@
     <text>File</text>
     <x>90</x>
     <y>29</y>
-    <width>40</width>
+    <width>26</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -88,7 +89,8 @@
     <text>ROI</text>
     <x>230</x>
     <y>29</y>
-    <width>30</width>
+    <width>29</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -189,6 +191,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>related display #35</name>
@@ -246,6 +249,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>related display #42</name>
@@ -265,13 +269,15 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #45</name>
     <text>Stats</text>
     <x>10</x>
     <y>55</y>
-    <width>50</width>
+    <width>37</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -284,7 +290,7 @@
       <action type="open_display">
         <file>NDStats.opi</file>
         <macros>
-          <R>Stats1:</R>
+          <R>$(CAM):Stats1:</R>
         </macros>
         <target>tab</target>
         <description>Statistics #1</description>
@@ -292,7 +298,7 @@
       <action type="open_display">
         <file>NDStats.opi</file>
         <macros>
-          <R>Stats2:</R>
+          <R>$(CAM):Stats2:</R>
         </macros>
         <target>tab</target>
         <description>Statistics #2</description>
@@ -300,7 +306,7 @@
       <action type="open_display">
         <file>NDStats.opi</file>
         <macros>
-          <R>Stats3:</R>
+          <R>$(CAM):Stats3:</R>
         </macros>
         <target>tab</target>
         <description>Statistics #3</description>
@@ -308,7 +314,7 @@
       <action type="open_display">
         <file>NDStats.opi</file>
         <macros>
-          <R>Stats4:</R>
+          <R>$(CAM):Stats4:</R>
         </macros>
         <target>tab</target>
         <description>Statistics #4</description>
@@ -316,7 +322,7 @@
       <action type="open_display">
         <file>NDStats.opi</file>
         <macros>
-          <R>Stats5:</R>
+          <R>$(CAM):Stats5:</R>
         </macros>
         <target>tab</target>
         <description>Statistics #5</description>
@@ -324,11 +330,11 @@
       <action type="open_display">
         <file>NDStats5.opi</file>
         <macros>
-          <R1>Stats1:</R1>
-          <R2>Stats2:</R2>
-          <R3>Stats3:</R3>
-          <R4>Stats4:</R4>
-          <R5>Stats5:</R5>
+          <R1>$(CAM):Stats1:</R1>
+          <R2>$(CAM):Stats2:</R2>
+          <R3>$(CAM):Stats3:</R3>
+          <R4>$(CAM):Stats4:</R4>
+          <R5>$(CAM):Stats5:</R5>
         </macros>
         <target>tab</target>
         <description>Statistics 1-5</description>
@@ -343,6 +349,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>related display #56</name>
@@ -350,7 +357,7 @@
       <action type="open_display">
         <file>NDStdArrays.opi</file>
         <macros>
-          <R>image1:</R>
+          <R>$(CAM):image1:</R>
         </macros>
         <target>tab</target>
         <description>Image #1</description>
@@ -358,7 +365,7 @@
       <action type="open_display">
         <file>NDPva.opi</file>
         <macros>
-          <R>Pva1:</R>
+          <R>$(CAM):Pva1:</R>
         </macros>
         <target>tab</target>
         <description>Pva #1</description>
@@ -366,7 +373,7 @@
       <action type="open_display">
         <file>NDProcess.opi</file>
         <macros>
-          <R>Proc1:</R>
+          <R>$(CAM):Proc1:</R>
         </macros>
         <target>tab</target>
         <description>Process #1</description>
@@ -374,7 +381,7 @@
       <action type="open_display">
         <file>NDTransform.opi</file>
         <macros>
-          <R>Trans1:</R>
+          <R>$(CAM):Trans1:</R>
         </macros>
         <target>tab</target>
         <description>Transform #1</description>
@@ -382,7 +389,7 @@
       <action type="open_display">
         <file>NDColorConvert.opi</file>
         <macros>
-          <R>CC1:</R>
+          <R>$(CAM):CC1:</R>
         </macros>
         <target>tab</target>
         <description>Color convert #1</description>
@@ -390,7 +397,7 @@
       <action type="open_display">
         <file>NDColorConvert.opi</file>
         <macros>
-          <R>CC2:</R>
+          <R>$(CAM):CC2:</R>
         </macros>
         <target>tab</target>
         <description>Color convert #2</description>
@@ -398,7 +405,7 @@
       <action type="open_display">
         <file>NDOverlay.opi</file>
         <macros>
-          <R>Over1:</R>
+          <R>$(CAM):Over1:</R>
         </macros>
         <target>tab</target>
         <description>Overlay #1</description>
@@ -414,7 +421,7 @@
           <O6>Over1:6:</O6>
           <O7>Over1:7:</O7>
           <O8>Over1:8:</O8>
-          <R>Over1:</R>
+          <R>$(CAM):Over1:</R>
         </macros>
         <target>tab</target>
         <description>Overlays 1-8</description>
@@ -422,7 +429,7 @@
       <action type="open_display">
         <file>NDCircularBuff.opi</file>
         <macros>
-          <R>CB1:</R>
+          <R>$(CAM):CB1:</R>
         </macros>
         <target>tab</target>
         <description>Circular buffer #1</description>
@@ -430,7 +437,7 @@
       <action type="open_display">
         <file>NDROIStat.opi</file>
         <macros>
-          <R>ROIStat1:</R>
+          <R>$(CAM):ROIStat1:</R>
         </macros>
         <target>tab</target>
         <description>ROI Statistics #1</description>
@@ -438,7 +445,7 @@
       <action type="open_display">
         <file>NDPluginAttribute.opi</file>
         <macros>
-          <R>Attr1:</R>
+          <R>$(CAM):Attr1:</R>
         </macros>
         <target>tab</target>
         <description>Attribute #1</description>
@@ -446,7 +453,7 @@
       <action type="open_display">
         <file>NDFFT.opi</file>
         <macros>
-          <R>FFT1:</R>
+          <R>$(CAM):FFT1:</R>
         </macros>
         <target>tab</target>
         <description>FFT #1</description>
@@ -454,7 +461,7 @@
       <action type="open_display">
         <file>NDScatter.opi</file>
         <macros>
-          <R>Scatter1:</R>
+          <R>$(CAM):Scatter1:</R>
         </macros>
         <target>tab</target>
         <description>Scatter #1</description>
@@ -462,7 +469,7 @@
       <action type="open_display">
         <file>NDGather8.opi</file>
         <macros>
-          <R>Gather1:</R>
+          <R>$(CAM):Gather1:</R>
         </macros>
         <target>tab</target>
         <description>Gather #1</description>
@@ -470,7 +477,7 @@
       <action type="open_display">
         <file>NDCodec.opi</file>
         <macros>
-          <R>Codec1:</R>
+          <R>$(CAM):Codec1:</R>
         </macros>
         <target>tab</target>
         <description>Codec #1</description>
@@ -478,7 +485,7 @@
       <action type="open_display">
         <file>NDCodec.opi</file>
         <macros>
-          <R>Codec2:</R>
+          <R>$(CAM):Codec2:</R>
         </macros>
         <target>tab</target>
         <description>Codec #2</description>
@@ -493,6 +500,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>related display #74</name>
@@ -572,5 +580,6 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

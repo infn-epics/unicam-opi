@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-27 15:28:16 by Alex-->
+<display version="2.0.0">
+  <name>TestTabs</name>
+  <width>321</width>
+  <height>671</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Image Panel</name>
+    <tabs>
+      <tab>
+        <name>Acquire</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_CamPanel.bob</file>
+            <y>5</y>
+            <width>319</width>
+            <height>571</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Save</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_SavePanel.bob</file>
+            <width>316</width>
+            <height>636</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Camera Info</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_InfoPanel.bob</file>
+            <x>5</x>
+            <width>300</width>
+            <height>511</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Links</name>
+        <children>
+          <widget type="embedded" version="2.0.0">
+            <name>Vcam panel template</name>
+            <file>Basler_ADLinkPanel.bob</file>
+            <x>5</x>
+            <width>300</width>
+            <height>511</height>
+            <actions>
+            </actions>
+            <border_color>
+              <color name="IO Border" red="215" green="215" blue="215">
+              </color>
+            </border_color>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Hist</name>
+        <children>
+          <widget type="xyplot" version="3.0.0">
+            <name>X/Y Plot</name>
+            <x>4</x>
+            <y>38</y>
+            <width>309</width>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="0" blue="0">
+              </color>
+            </background_color>
+            <x_axis>
+              <title>Intensity</title>
+              <autoscale>true</autoscale>
+              <log_scale>false</log_scale>
+              <minimum>0.0</minimum>
+              <maximum>100.0</maximum>
+              <show_grid>false</show_grid>
+              <title_font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </title_font>
+              <scale_font>
+                <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+                </font>
+              </scale_font>
+              <visible>true</visible>
+            </x_axis>
+            <y_axes>
+              <y_axis>
+                <title>Counts</title>
+                <autoscale>false</autoscale>
+                <log_scale>false</log_scale>
+                <minimum>-10.0</minimum>
+                <maximum>10.0</maximum>
+                <show_grid>false</show_grid>
+                <title_font>
+                  <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                  </font>
+                </title_font>
+                <scale_font>
+                  <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+                  </font>
+                </scale_font>
+                <on_right>false</on_right>
+                <visible>true</visible>
+                <color>
+                  <color red="255" green="255" blue="255">
+                  </color>
+                </color>
+              </y_axis>
+            </y_axes>
+            <traces>
+              <trace>
+                <name>$(traces[0].y_pv)</name>
+                <x_pv>$(DEVICE):$(CAM):Stats1:HistogramX_RBV</x_pv>
+                <y_pv>$(DEVICE):$(CAM):Stats1:Histogram_RBV</y_pv>
+                <err_pv></err_pv>
+                <axis>0</axis>
+                <trace_type>1</trace_type>
+                <color>
+                  <color red="255" green="255" blue="255">
+                  </color>
+                </color>
+                <line_width>1</line_width>
+                <line_style>0</line_style>
+                <point_type>0</point_type>
+                <point_size>10</point_size>
+                <visible>true</visible>
+              </trace>
+            </traces>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <width>350</width>
+    <height>671</height>
+    <background_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </background_color>
+    <tab_height>10</tab_height>
+    <actions>
+    </actions>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_1</name>
+    <x>380</x>
+    <y>480</y>
+    <width>10</width>
+    <height>1</height>
+  </widget>
+</display>

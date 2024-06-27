@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-12 16:52:08 by Alex-->
+<!--Saved on 2024-06-27 15:37:02 by Alex-->
 <display version="2.0.0">
-  <name>Fluorescent Screen Operator GUI</name>
+  <name>Camera Screen Operator GUI</name>
   <macros>
     <HCAM>CAM</HCAM>
     <HDEVICE>FSIA</HDEVICE>
@@ -31,7 +31,7 @@
   <widget type="embedded" version="2.0.0">
     <name>Linking Container Template</name>
     <file>Basler_ColorImagePanel.bob</file>
-    <x>360</x>
+    <x>395</x>
     <y>85</y>
     <width>671</width>
     <height>547</height>
@@ -41,93 +41,6 @@
       <color name="IO Border" red="215" green="215" blue="215">
       </color>
     </border_color>
-  </widget>
-  <widget type="tabs" version="2.0.0">
-    <name>Image Panel</name>
-    <tabs>
-      <tab>
-        <name>Acquire</name>
-        <children>
-          <widget type="embedded" version="2.0.0">
-            <name>Vcam panel template</name>
-            <file>Basler_CamPanel.bob</file>
-            <width>316</width>
-            <height>571</height>
-            <actions>
-            </actions>
-            <border_color>
-              <color name="IO Border" red="215" green="215" blue="215">
-              </color>
-            </border_color>
-          </widget>
-        </children>
-      </tab>
-      <tab>
-        <name>Save File</name>
-        <children>
-          <widget type="embedded" version="2.0.0">
-            <name>Vcam panel template</name>
-            <file>Basler_SavePanel.bob</file>
-            <width>316</width>
-            <height>636</height>
-            <actions>
-            </actions>
-            <border_color>
-              <color name="IO Border" red="215" green="215" blue="215">
-              </color>
-            </border_color>
-          </widget>
-        </children>
-      </tab>
-      <tab>
-        <name>Camera Info</name>
-        <children>
-          <widget type="embedded" version="2.0.0">
-            <name>Vcam panel template</name>
-            <file>Basler_InfoPanel.bob</file>
-            <x>5</x>
-            <width>300</width>
-            <height>511</height>
-            <actions>
-            </actions>
-            <border_color>
-              <color name="IO Border" red="215" green="215" blue="215">
-              </color>
-            </border_color>
-          </widget>
-        </children>
-      </tab>
-      <tab>
-        <name>Links</name>
-        <children>
-          <widget type="embedded" version="2.0.0">
-            <name>Vcam panel template</name>
-            <file>Basler_ADLinkPanel.bob</file>
-            <x>5</x>
-            <width>300</width>
-            <height>511</height>
-            <actions>
-            </actions>
-            <border_color>
-              <color name="IO Border" red="215" green="215" blue="215">
-              </color>
-            </border_color>
-          </widget>
-        </children>
-      </tab>
-    </tabs>
-    <x>10</x>
-    <y>105</y>
-    <width>321</width>
-    <height>671</height>
-    <background_color>
-      <color name="IO Foreground" red="0" green="0" blue="0">
-      </color>
-    </background_color>
-    <active_tab>1</active_tab>
-    <tab_height>10</tab_height>
-    <actions>
-    </actions>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Title Banner</name>
@@ -156,5 +69,37 @@
       <color name="IO Border" red="215" green="215" blue="215">
       </color>
     </border_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box Camera</name>
+    <pv_name>loc://chooseCamera("ACE01")</pv_name>
+    <x>145</x>
+    <y>85</y>
+    <width>190</width>
+    <scripts>
+      <script file="Scripts/Cam2Macro.py">
+        <pv_name>loc://chooseCamera</pv_name>
+      </script>
+    </scripts>
+    <items>
+      <item>ACE01</item>
+      <item>CAM:AC1CAM01</item>
+      <item>CAM:AC2CAM01</item>
+      <item>CAM:AC3CAM01</item>
+      <item>CAM:GUNCAM01</item>
+      <item>CAM:PLVCAM01</item>
+      <item>CAM:OSCAM01</item>
+      <item>CAM:OSCAM02</item>
+      <item>CAM:UTLCAM02</item>
+      <item>CAM:THVCAM01</item>
+    </items>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <file>TabDisplay.bob</file>
+    <x>18</x>
+    <y>133</y>
+    <width>377</width>
+    <height>710</height>
   </widget>
 </display>
