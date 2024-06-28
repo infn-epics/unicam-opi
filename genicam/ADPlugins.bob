@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-21 15:13:29 by Alex-->
+<!--Saved on 2024-06-28 13:27:33 by andreamichelotti-->
 <display version="2.0.0">
   <name>ADPlugins</name>
   <x>141</x>
@@ -357,7 +357,7 @@
       <action type="open_display">
         <file>NDStdArrays.opi</file>
         <macros>
-          <R>$(CAM):image1:</R>
+          <R>image1:</R>
         </macros>
         <target>tab</target>
         <description>Image #1</description>
