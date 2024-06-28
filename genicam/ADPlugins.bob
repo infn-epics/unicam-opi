@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-28 13:27:33 by andreamichelotti-->
+<!--Saved on 2024-06-28 13:48:47 by Alex-->
 <display version="2.0.0">
   <name>ADPlugins</name>
   <x>141</x>
@@ -365,7 +365,7 @@
       <action type="open_display">
         <file>NDPva.opi</file>
         <macros>
-          <R>$(CAM):Pva1:</R>
+          <R>Pva1:</R>
         </macros>
         <target>tab</target>
         <description>Pva #1</description>
@@ -373,7 +373,7 @@
       <action type="open_display">
         <file>NDProcess.opi</file>
         <macros>
-          <R>$(CAM):Proc1:</R>
+          <R>Proc1:</R>
         </macros>
         <target>tab</target>
         <description>Process #1</description>
@@ -381,7 +381,7 @@
       <action type="open_display">
         <file>NDTransform.opi</file>
         <macros>
-          <R>$(CAM):Trans1:</R>
+          <R>Trans1:</R>
         </macros>
         <target>tab</target>
         <description>Transform #1</description>
@@ -389,7 +389,7 @@
       <action type="open_display">
         <file>NDColorConvert.opi</file>
         <macros>
-          <R>$(CAM):CC1:</R>
+          <R>CC1:</R>
         </macros>
         <target>tab</target>
         <description>Color convert #1</description>
@@ -397,7 +397,7 @@
       <action type="open_display">
         <file>NDColorConvert.opi</file>
         <macros>
-          <R>$(CAM):CC2:</R>
+          <R>CC2:</R>
         </macros>
         <target>tab</target>
         <description>Color convert #2</description>
@@ -405,7 +405,7 @@
       <action type="open_display">
         <file>NDOverlay.opi</file>
         <macros>
-          <R>$(CAM):Over1:</R>
+          <R>$Over1:</R>
         </macros>
         <target>tab</target>
         <description>Overlay #1</description>
@@ -421,7 +421,7 @@
           <O6>Over1:6:</O6>
           <O7>Over1:7:</O7>
           <O8>Over1:8:</O8>
-          <R>$(CAM):Over1:</R>
+          <R>Over1:</R>
         </macros>
         <target>tab</target>
         <description>Overlays 1-8</description>
@@ -429,7 +429,7 @@
       <action type="open_display">
         <file>NDCircularBuff.opi</file>
         <macros>
-          <R>$(CAM):CB1:</R>
+          <R>CB1:</R>
         </macros>
         <target>tab</target>
         <description>Circular buffer #1</description>
@@ -437,7 +437,7 @@
       <action type="open_display">
         <file>NDROIStat.opi</file>
         <macros>
-          <R>$(CAM):ROIStat1:</R>
+          <R>ROIStat1:</R>
         </macros>
         <target>tab</target>
         <description>ROI Statistics #1</description>
@@ -445,7 +445,7 @@
       <action type="open_display">
         <file>NDPluginAttribute.opi</file>
         <macros>
-          <R>$(CAM):Attr1:</R>
+          <R>Attr1:</R>
         </macros>
         <target>tab</target>
         <description>Attribute #1</description>
@@ -453,7 +453,7 @@
       <action type="open_display">
         <file>NDFFT.opi</file>
         <macros>
-          <R>$(CAM):FFT1:</R>
+          <R>FFT1:</R>
         </macros>
         <target>tab</target>
         <description>FFT #1</description>
@@ -461,7 +461,7 @@
       <action type="open_display">
         <file>NDScatter.opi</file>
         <macros>
-          <R>$(CAM):Scatter1:</R>
+          <R>Scatter1:</R>
         </macros>
         <target>tab</target>
         <description>Scatter #1</description>
@@ -469,7 +469,7 @@
       <action type="open_display">
         <file>NDGather8.opi</file>
         <macros>
-          <R>$(CAM):Gather1:</R>
+          <R>Gather1:</R>
         </macros>
         <target>tab</target>
         <description>Gather #1</description>
@@ -477,7 +477,7 @@
       <action type="open_display">
         <file>NDCodec.opi</file>
         <macros>
-          <R>$(CAM):Codec1:</R>
+          <R>Codec1:</R>
         </macros>
         <target>tab</target>
         <description>Codec #1</description>
@@ -485,7 +485,7 @@
       <action type="open_display">
         <file>NDCodec.opi</file>
         <macros>
-          <R>$(CAM):Codec2:</R>
+          <R>Codec2:</R>
         </macros>
         <target>tab</target>
         <description>Codec #2</description>
