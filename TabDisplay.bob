@@ -12,7 +12,7 @@
         <children>
           <widget type="embedded" version="2.0.0">
             <name>Vcam panel template</name>
-            <file>Basler_CamPanel.bob</file>
+            <file>Camera_CamPanel.bob</file>
             <y>5</y>
             <width>319</width>
             <height>571</height>
@@ -30,7 +30,7 @@
         <children>
           <widget type="embedded" version="2.0.0">
             <name>Vcam panel template</name>
-            <file>Basler_SavePanel.bob</file>
+            <file>Camera_SavePanel.bob</file>
             <width>316</width>
             <height>636</height>
             <actions>
@@ -47,7 +47,7 @@
         <children>
           <widget type="embedded" version="2.0.0">
             <name>Vcam panel template</name>
-            <file>Basler_InfoPanel.bob</file>
+            <file>Camera_InfoPanel.bob</file>
             <x>5</x>
             <width>300</width>
             <height>511</height>
@@ -65,7 +65,7 @@
         <children>
           <widget type="embedded" version="2.0.0">
             <name>Vcam panel template</name>
-            <file>Basler_ADLinkPanel.bob</file>
+            <file>Camera_ADLinkPanel.bob</file>
             <x>5</x>
             <width>300</width>
             <height>511</height>

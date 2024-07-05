@@ -30,7 +30,7 @@
   <grid_step_y>5</grid_step_y>
   <widget type="embedded" version="2.0.0">
     <name>CameraImage</name>
-    <file>Basler_ColorImagePanel.bob</file>
+    <file>Camera_ColorImagePanel.bob</file>
     <x>395</x>
     <y>85</y>
     <width>671</width>
@@ -44,7 +44,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Title Banner</name>
-    <text>CCD Camera - $(DEVICE)</text>
+    <text>Camera - $(DEVICE):$(CAM)</text>
     <width>1056</width>
     <height>45</height>
     <font>
@@ -70,34 +70,7 @@
       </color>
     </border_color>
   </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box Camera</name>
-    <pv_name>loc://chooseCamera("ACE01")</pv_name>
-    <x>145</x>
-    <y>85</y>
-    <width>190</width>
-    <scripts>
-      <script file="Scripts/Cam2Macro.py">
-        <pv_name>loc://chooseCamera</pv_name>
-      </script>
-    </scripts>
-    <items>
-      <item>ACE01</item>
-      <item>AC101</item>
-      <item>AC201</item>
-      <item>AC301</item>
-      <item>GUN01</item>
-      <item>PLV01</item>
-      <item>PLV02</item>
-      <item>EOS01</item>
-      <item>EOS02</item>
-      <item>UTL02</item>
-      <item>THV01</item>
-      <item>THV02</item>
-      <item>DGL00</item>
-      <item>DGL01</item>
-    </items>
-  </widget>
+  
   <widget type="embedded" version="2.0.0">
     <name>CameraControls</name>
     <file>TabDisplay.bob</file>

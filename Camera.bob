@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
 <display version="2.0.0">
-  <name>Basler CCD Camera</name>
+  <name>Camera</name>
   <macros>
     <CAM>CAM1</CAM>
     <IMAGE>NDAR1</IMAGE>
@@ -16,38 +16,24 @@
     <color name="IO Grid" red="215" green="215" blue="215">
     </color>
   </background_color>
-  <actions>
-  </actions>
+  <scripts>
+    <script file="Scripts/LoadDevice.py" check_connections="false">
+      <pv_name trigger="false">loc://FileName_$(DID)&lt;VString&gt;($(CONFFILE=camera.list))</pv_name>
+    </script>
+  </scripts>
   <grid_step_x>5</grid_step_x>
   <grid_step_y>5</grid_step_y>
   <widget type="embedded" version="2.0.0">
     <name>Linking Container Template</name>
-    <file>Basler_Main.opi</file>
+    <file>Camera_Main.opi</file>
     <width>1056</width>
     <height>786</height>
     <transparent>true</transparent>
     <actions>
       
     </actions>
-    <rules>
-      <rule name="ClearOPIRule" prop_id="opi_file" out_exp="false">
-        <exp bool_exp="true">
-          <value></value>
-        </exp>
-        <exp bool_exp="false">
-          <value></value>
-        </exp>
-        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
-      </rule>
-      <rule name="SetOPIRule" prop_id="opi_file" out_exp="false">
-        <exp bool_exp="true">
-          <value>Basler_Main.opi</value>
-        </exp>
-        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
-      </rule>
-    </rules>
     <scripts>
-      <script file="Scripts/Device2Macro.js">
+      <script file="Scripts/DeviceSelectDefault.py">
         <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
       </script>
     </scripts>
@@ -57,7 +43,7 @@
     </border_color>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>Device prefix combo</name>
+    <name>DeviceCombo</name>
     <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
     <x>195</x>
     <y>65</y>
@@ -78,27 +64,9 @@
     <actions>
     </actions>
     <scripts>
-      <script file="Scripts/DeviceSelectDefault.js">
-        <pv_name>=1</pv_name>
-      </script>
     </scripts>
     <items>
-      <item>INJGUN01:YSC</item>
-      <item>FLGGUN01:YSC</item>
-      <item>FLGLIN01:YSC</item>
-      <item>FLGLIN02:YSC</item>
-      <item>FLGTRL01:YSC</item>
-      <item>FLGDGL01:YSC</item>
-      <item>FLGDGL02:YSC</item>
-      <item>FLGIPL01:YSC</item>
-      <item>INTIPL01:YSC</item>
-      <item>FLGDUM01:YSC</item>
-      <item>FLGHEL01:YSC</item>
-      <item>FLGHEL02:YSC</item>
-      <item>FLGHEL03:YSC</item>
-      <item>INTHEL01:YSC</item>
-      <item>FLGHEL04:YSC</item>
-      <item>FLGSTR01:YSC</item>
+     
     </items>
     <items_from_pv>false</items_from_pv>
   </widget>
