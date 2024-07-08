@@ -25,7 +25,7 @@
   <grid_step_y>5</grid_step_y>
   <widget type="embedded" version="2.0.0">
     <name>Linking Container Template</name>
-    <file>Camera_Main.opi</file>
+    <file>Camera_Main.bob</file>
     <width>1056</width>
     <height>786</height>
     <transparent>true</transparent>
