@@ -1,13 +1,24 @@
 from org.csstudio.display.builder.runtime.script import ScriptUtil,PVUtil
-
+#from org.csstudio.display.builder.runtime import ActionUtil
 import os
 from java.lang import Exception
 logger = ScriptUtil.getLogger()
 
 
-conffile = PVUtil.getString(pvs[0]) ## Expects FileName as first parameter
-logger.info("LOAD Devices, Device file "+conffile + " PV: "+str(pvs[0]))
+conffile = widget.getEffectiveMacros().getValue("CONFFILE")
+display_model =  widget.getDisplayModel()
 
+
+logger.info("LOAD Devices, Device file "+conffile + " PV: "+str(pvs[0]))
+display_path = display_model.getUserData(display_model.USER_DATA_INPUT_FILE)
+#percorso_assoluto = os.path.abspath(".")
+#logger.info("LOAD Devices, percorso assoluto " + percorso_assoluto)
+
+directory = os.path.dirname(display_path) +"/../../ini/" 
+
+conffile=directory + conffile
+ScriptUtil.showMessageDialog(widget,"Percorso " + conffile)
+#logger.info("LOAD Devices, $PWD " + display_model )
 if not os.path.exists(conffile):
     opihome=os.getenv("OPIHOME",".")
     ini=opihome+"/ini"
