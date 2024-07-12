@@ -16,13 +16,16 @@ display_path = display_model.getUserData(display_model.USER_DATA_INPUT_FILE)
 
 directory = os.path.dirname(display_path) +"/../../ini/" 
 
-conffile=directory + conffile
-ScriptUtil.showMessageDialog(widget,"Percorso " + conffile)
 #logger.info("LOAD Devices, $PWD " + display_model )
 if not os.path.exists(conffile):
     opihome=os.getenv("OPIHOME",".")
     ini=opihome+"/ini"
-    conffile=ini+"/"+conffile
+    conffile_try=ini+"/"+conffile
+    if not os.path.exists(conffile_try):
+        conffile=directory + conffile
+    else:
+        conffile=conffile_try
+
 
 if not os.path.exists(conffile):
     ScriptUtil.showMessageDialog(widget,"Cannot find  file \""+conffile+"\" please set CONFILE macro to a correct file")
@@ -48,9 +51,8 @@ with open(motorf, 'r') as file:
 
 
 combo.setItems(device_list)
-#if len(device_list) > 0:
-    #device_macro= axis.getPropertyValue("macros")
-    #device_macro.add("DEVICE", device_prefix + device_list[0])
-    # axis.setPropertyValue("file","")
-    # axis.setPropertyValue("file","TML_Main.bob")
+
+if len(device_list): ## put the first as default
+    ScriptUtil.getPrimaryPV(combo).write(device_list[0])
+
 
