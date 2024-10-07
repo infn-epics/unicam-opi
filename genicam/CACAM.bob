@@ -65,13 +65,13 @@
         <exp bool_exp="pvInt0">
           <expression>pvInt0</expression>
         </exp>
-        <pv_name>$(CAMERA):SizeX_RBV</pv_name>
+        <pv_name>$(P):$(R):SizeX_RBV</pv_name>
       </rule>
       <rule name="sizey" prop_id="data_height" out_exp="true">
         <exp bool_exp="pvInt0">
           <expression>pvInt0</expression>
         </exp>
-        <pv_name>$(CAMERA):SizeY_RBV</pv_name>
+        <pv_name>$(P):$(R):SizeY_RBV</pv_name>
       </rule>
     </rules>
   </widget>
