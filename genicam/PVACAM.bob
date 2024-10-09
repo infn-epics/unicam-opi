@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-07 20:48:51 by andreamichelotti-->
+<!--Saved on 2024-10-09 13:50:01 by andreamichelotti-->
 <display version="2.0.0">
   <name>Display</name>
   <width>440</width>
@@ -79,7 +79,7 @@
         <file>./ADAravis.bob</file>
         <macros>
           <P>$(P):</P>
-          <R>$(R)</R>
+          <R>$(R):</R>
           <C>$(MODEL=Basler-scA640-70gm)</C>
           <CAM></CAM>
         </macros>
