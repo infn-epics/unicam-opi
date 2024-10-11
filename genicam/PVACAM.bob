@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-28 00:00:21 by andreamichelotti-->
+<!--Saved on 2024-10-09 13:50:01 by andreamichelotti-->
 <display version="2.0.0">
   <name>Display</name>
   <width>440</width>
@@ -7,7 +7,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>$(CAMERA)</text>
+    <text>$(P):$(R)</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>440</width>
@@ -24,14 +24,11 @@
   </widget>
   <widget type="image" version="2.0.0">
     <name>Image_2</name>
-    <pv_name>$(PVIMAGE=$(CAMERA):image1:ArrayData)</pv_name>
+    <pv_name>pva://$(P):$(R):PVA:OUTPUT</pv_name>
     <y>31</y>
     <width>430</width>
     <height>319</height>
     <show_toolbar>true</show_toolbar>
-    <color_map>
-      <name>GRAY</name>
-    </color_map>
     <x_axis>
       <visible>false</visible>
       <title>X</title>
@@ -65,13 +62,13 @@
         <exp bool_exp="pvInt0">
           <expression>pvInt0</expression>
         </exp>
-        <pv_name>$(CAMERA):SizeX_RBV</pv_name>
+        <pv_name>$(P):$(R):SizeX_RBV</pv_name>
       </rule>
       <rule name="sizey" prop_id="data_height" out_exp="true">
         <exp bool_exp="pvInt0">
           <expression>pvInt0</expression>
         </exp>
-        <pv_name>$(CAMERA):SizeY_RBV</pv_name>
+        <pv_name>$(P):$(R):SizeY_RBV</pv_name>
       </rule>
     </rules>
   </widget>
@@ -81,8 +78,8 @@
       <action type="open_display">
         <file>./ADAravis.bob</file>
         <macros>
-          <P>$(CAMERA):</P>
-          <R></R>
+          <P>$(P):</P>
+          <R>$(R):</R>
           <C>$(MODEL=Basler-scA640-70gm)</C>
           <CAM></CAM>
         </macros>
