@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-11 18:05:23 by Alex-->
+<!--Saved on 2024-10-10 19:13:51 by Alex-->
 <display version="2.0.0">
   <background_color>
     <color red="240" green="240" blue="240">
@@ -12,9 +12,9 @@
   <widget type="image" version="2.0.0">
     <name>VImage</name>
     <pv_name>pva://$(DEVICE):$(CAM):PVA:OUTPUT</pv_name>
-    <y>50</y>
-    <width>658</width>
-    <height>492</height>
+    <y>42</y>
+    <width>654</width>
+    <height>508</height>
     <x_axis>
       <visible>false</visible>
       <title>X</title>
@@ -45,6 +45,91 @@
     </y_axis>
     <actions>
     </actions>
+    <rules>
+      <rule name="Roi Visible" prop_id="rois[0].visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="pv0 ==0">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://roiVisible</pv_name>
+      </rule>
+    </rules>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefix=macro_device+':'+macro_cam+":" +"Stats1"+":"
+prefis=macro_device+':'+macro_cam+":"
+
+pname=prefix+"ComputeCentroid_RBV"
+pvx = PVUtil.createPV(pname,1000)
+val = PVUtil.getInt(pvx)
+if val == 1:
+	DisplayW=widget.getPropertyValue("width")
+	DisplayH=widget.getPropertyValue("height")
+	pname=prefis+"SizeX_RBV"
+	pv = PVUtil.createPV(pname,1000)
+	X_Img = PVUtil.getDouble(pv)
+	pname=prefis+"SizeY_RBV"
+	pv=PVUtil.createPV(pname,1000)
+	Y_Img=PVUtil.getDouble(pv)
+	
+	pname=prefix+"CentroidX_RBV"
+	pv=PVUtil.createPV(pname,1000)
+	XCen=PVUtil.getDouble(pv)
+ #xCen : X_Img = RealX : DisplayW
+	#print XCen
+	XCen=(XCen*DisplayW)/X_Img
+	#print XCen
+	pname=prefix+"CentroidY_RBV"
+	pv=PVUtil.createPV(pname,1000)
+	YCen=PVUtil.getDouble(pv)
+	YCen=(YCen*DisplayH)/Y_Img
+	pname=prefix+"SigmaX_RBV"
+	pv=PVUtil.createPV(pname,1000)
+	WCen=PVUtil.getDouble(pv)
+	WCen=(WCen*DisplayW)/X_Img
+	pname=prefix+"SigmaY_RBV"
+	pv=PVUtil.createPV(pname,1000)
+	HCen=PVUtil.getDouble(pv)
+	HCen=(HCen*DisplayH)/Y_Img
+	ellipse_widget = ScriptUtil.findWidgetByName(widget, "Centroid")
+	if ellipse_widget is not None:
+    		# Aggiorna la posizione dell'ellisse
+    		ellipse_widget.setPropertyValue("x", XCen-WCen)
+    		ellipse_widget.setPropertyValue("y", YCen-HCen)
+		ellipse_widget.setPropertyValue("width", WCen* 2)
+    		ellipse_widget.setPropertyValue("height", HCen* 2)
+]]></text>
+        <pv_name>pva://$(DEVICE):$(CAM):PVA:OUTPUT</pv_name>
+      </script>
+    </scripts>
+    <rois>
+      <roi>
+        <name>ROI 0</name>
+        <color>
+          <color red="255" green="0" blue="0">
+          </color>
+        </color>
+        <visible>true</visible>
+        <interactive>true</interactive>
+        <x_pv>loc://$(DEVICE):$(CAM):roi_x</x_pv>
+        <y_pv>loc://$(DEVICE):$(CAM):roi_y</y_pv>
+        <width_pv>loc://$(DEVICE):$(CAM):roi_w</width_pv>
+        <height_pv>loc://$(DEVICE):$(CAM):roi_h</height_pv>
+        <file></file>
+      </roi>
+    </rois>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button Template_1</name>
@@ -104,5 +189,25 @@
       <color name="IO Border" red="215" green="215" blue="215">
       </color>
     </border_color>
+  </widget>
+  <widget type="ellipse" version="2.0.0">
+    <name>Centroid</name>
+    <x>186</x>
+    <y>240</y>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0 ==1">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="pv0 == 0">
+          <value>false</value>
+        </exp>
+        <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid_RBV</pv_name>
+      </rule>
+    </rules>
   </widget>
 </display>
