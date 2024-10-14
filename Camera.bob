@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-06 20:32:43 by andreamichelotti-->
+<!--Saved on 2024-10-14 16:01:55 by Alex-->
 <display version="2.0.0">
   <name>Camera</name>
   <macros>
@@ -10,8 +10,8 @@
     <STATS>STATS1</STATS>
     <HW>HW</HW>
   </macros>
-  <width>1029</width>
-  <height>796</height>
+  <width>1204</width>
+  <height>930</height>
   <background_color>
     <color name="IO Grid" red="215" green="215" blue="215">
     </color>
@@ -23,75 +23,85 @@
   </scripts>
   <grid_step_x>5</grid_step_x>
   <grid_step_y>5</grid_step_y>
-  <widget type="embedded" version="2.0.0">
-    <name>Linking Container Template</name>
-    <file>Camera_Main.bob</file>
-    <width>1056</width>
-    <height>786</height>
-    <transparent>true</transparent>
-    <actions>
-      
-    </actions>
-    <scripts>
-      <script file="Scripts/DeviceSelectDefault.py">
+  <widget type="group" version="3.0.0">
+    <name>Group_2</name>
+    <x>57</x>
+    <y>28</y>
+    <width>1090</width>
+    <height>874</height>
+    <style>3</style>
+    <widget type="group" version="3.0.0">
+      <name>Group_1</name>
+      <x>28</x>
+      <y>57</y>
+      <width>331</width>
+      <height>46</height>
+      <style>2</style>
+      <widget type="label" version="2.0.0">
+        <name>Label_85</name>
+        <text>Camera Selection</text>
+        <y>6</y>
+        <width>152</width>
+        <height>25</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Label" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <vertical_alignment>1</vertical_alignment>
+        <wrap_words>false</wrap_words>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="combo" version="2.0.0">
+        <name>DeviceCombo</name>
         <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
-      </script>
-    </scripts>
-    <border_color>
-      <color name="IO Border" red="215" green="215" blue="215">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>DeviceCombo</name>
-    <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
-    <x>195</x>
-    <y>65</y>
-    <width>196</width>
-    <height>32</height>
-    <font>
-      <font family="Sans" style="BOLD" size="10.891089108910892">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="IO Foreground" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="IO OutputPV Fg" red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <actions>
-    </actions>
-    <scripts>
-    </scripts>
-    <items>
-     
-    </items>
-    <items_from_pv>false</items_from_pv>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_85</name>
-    <text>Camera Selection</text>
-    <x>20</x>
-    <y>71</y>
-    <width>176</width>
-    <height>25</height>
-    <font>
-      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="IO Label" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
+        <x>127</x>
+        <y>6</y>
+        <width>196</width>
+        <height>32</height>
+        <font>
+          <font family="Sans" style="BOLD" size="10.891089108910892">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="IO Foreground" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="IO OutputPV Fg" red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <actions>
+        </actions>
+        <items_from_pv>false</items_from_pv>
+      </widget>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>Linking Container Template</name>
+      <file>Camera_Main.bob</file>
+      <y>1</y>
+      <width>1056</width>
+      <height>840</height>
+      <transparent>true</transparent>
+      <actions>
+      </actions>
+      <scripts>
+        <script file="Scripts/DeviceSelectDefault.py">
+          <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+        </script>
+      </scripts>
+      <border_color>
+        <color name="IO Border" red="215" green="215" blue="215">
+        </color>
+      </border_color>
+    </widget>
   </widget>
 </display>

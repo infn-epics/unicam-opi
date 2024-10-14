@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-10 18:38:13 by Alex-->
+<!--Saved on 2024-10-14 15:57:58 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -75,8 +75,8 @@
     <file>TabDisplay.bob</file>
     <x>18</x>
     <y>133</y>
-    <width>377</width>
-    <height>710</height>
+    <width>352</width>
+    <height>667</height>
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>CheckBoxROI</name>
@@ -288,7 +288,7 @@ p_roi_h.setValue(20)]]></text>
     <x>535</x>
     <y>705</y>
     <width>220</width>
-    <height>195</height>
+    <height>95</height>
     <rules>
       <rule name="VisibilityRule" prop_id="visible" out_exp="false">
         <exp bool_exp="pv0==0">
