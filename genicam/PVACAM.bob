@@ -1,62 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-09 13:50:01 by andreamichelotti-->
+<!--Saved on 2024-10-14 11:50:52 by andreamichelotti-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>440</width>
-  <height>350</height>
-  <widget type="label" version="2.0.0">
-    <name>Label</name>
-    <class>TITLE</class>
-    <text>$(P):$(R)</text>
-    <x use_class="true">0</x>
-    <y use_class="true">0</y>
-    <width>440</width>
-    <height>31</height>
-    <font use_class="true">
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
-      </font>
-    </font>
-    <foreground_color use_class="true">
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <transparent use_class="true">true</transparent>
-  </widget>
-  <widget type="image" version="2.0.0">
-    <name>Image_2</name>
-    <pv_name>pva://$(P):$(R):PVA:OUTPUT</pv_name>
-    <y>31</y>
+  <width>870</width>
+  <height>800</height>
+  <widget type="embedded" version="2.0.0">
+    <name>ROI image</name>
+    <macros>
+      <TITLE>ROI</TITLE>
+      <OPI>NDRoi.bob</OPI>
+      <PVANAME>$(P):$(R):ROI1:OUTPUT</PVANAME>
+      <R>$(R):Roi1</R>
+    </macros>
+    <file>PVACAM-ele.bob</file>
+    <y>400</y>
     <width>430</width>
-    <height>319</height>
-    <show_toolbar>true</show_toolbar>
-    <x_axis>
-      <visible>false</visible>
-      <title>X</title>
-      <minimum>0.0</minimum>
-      <maximum>100.0</maximum>
-      <title_font>
-        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-        </font>
-      </title_font>
-      <scale_font>
-        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
-        </font>
-      </scale_font>
-    </x_axis>
-    <y_axis>
-      <visible>false</visible>
-      <title>Y</title>
-      <minimum>0.0</minimum>
-      <maximum>100.0</maximum>
-      <title_font>
-        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-        </font>
-      </title_font>
-      <scale_font>
-        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
-        </font>
-      </scale_font>
-    </y_axis>
+    <height>390</height>
+    <resize>1</resize>
     <rules>
       <rule name="sizex" prop_id="data_width" out_exp="true">
         <exp bool_exp="pvInt0">
@@ -72,22 +32,90 @@
       </rule>
     </rules>
   </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="open_display">
-        <file>./ADAravis.bob</file>
-        <macros>
-          <P>$(P):</P>
-          <R>$(R):</R>
-          <C>$(MODEL=Basler-scA640-70gm)</C>
-          <CAM></CAM>
-        </macros>
-        <target>window</target>
-        <description>Control</description>
-      </action>
-    </actions>
-    <x>340</x>
-    <tooltip>$(actions)</tooltip>
+  <widget type="embedded" version="2.0.0">
+    <name>Overlay Image</name>
+    <macros>
+      <TITLE>Reference</TITLE>
+      <OPI>NDOverlay.bob</OPI>
+      <PVANAME>$(P):$(R):OVERLAY1:OUTPUT</PVANAME>
+      <R>$(R):Overlay1</R>
+    </macros>
+    <file>PVACAM-ele.bob</file>
+    <x>440</x>
+    <y>400</y>
+    <width>430</width>
+    <height>390</height>
+    <resize>1</resize>
+    <rules>
+      <rule name="sizex" prop_id="data_width" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeX_RBV</pv_name>
+      </rule>
+      <rule name="sizey" prop_id="data_height" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeY_RBV</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Process Image</name>
+    <macros>
+      <TITLE>Process</TITLE>
+      <OPI>NDProcess.bob</OPI>
+      <PVANAME>$(P):$(R):PROC:OUTPUT</PVANAME>
+      <R>$(R):Proc1</R>
+    </macros>
+    <file>PVACAM-ele.bob</file>
+    <x>440</x>
+    <y>10</y>
+    <width>430</width>
+    <height>390</height>
+    <resize>1</resize>
+    <rules>
+      <rule name="sizex" prop_id="data_width" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeX_RBV</pv_name>
+      </rule>
+      <rule name="sizey" prop_id="data_height" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeY_RBV</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>RAW Image</name>
+    <macros>
+      <TITLE>$(P):$(R)</TITLE>
+      <OPI>ADAravis.bob</OPI>
+      <PVANAME>$(P):$(R):PVA:OUTPUT</PVANAME>
+      <R>$(R)</R>
+    </macros>
+    <file>PVACAM-ele.bob</file>
+    <y>10</y>
+    <width>430</width>
+    <height>390</height>
+    <resize>1</resize>
+    <rules>
+      <rule name="sizex" prop_id="data_width" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeX_RBV</pv_name>
+      </rule>
+      <rule name="sizey" prop_id="data_height" out_exp="true">
+        <exp bool_exp="pvInt0">
+          <expression>pvInt0</expression>
+        </exp>
+        <pv_name>$(P):$(R):SizeY_RBV</pv_name>
+      </rule>
+    </rules>
   </widget>
 </display>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-25 15:22:25 by epics-->
+<!--Saved on 2024-10-14 12:50:37 by andreamichelotti-->
 <display version="2.0.0">
   <name>NDOverlay</name>
   <x>353</x>
@@ -73,7 +73,7 @@
       <action type="open_display">
         <file>NDOverlayN.opi</file>
         <macros>
-          <R>$(R)1:</R>
+          <R>$(R)</R>
         </macros>
         <target>tab</target>
         <description>Overlay 1</description>
@@ -144,6 +144,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #27</name>
@@ -200,6 +201,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #34</name>

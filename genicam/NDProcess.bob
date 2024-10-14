@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-03-25 15:22:26 by epics-->
+<!--Saved on 2024-10-14 09:23:12 by andreamichelotti-->
 <display version="2.0.0">
   <name>NDProcess</name>
   <x>10</x>
@@ -135,7 +135,8 @@
     <text>Enable filter</text>
     <x>796</x>
     <y>70</y>
-    <width>130</width>
+    <width>85</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -313,8 +314,8 @@
     <text>On filter reset:</text>
     <x>755</x>
     <y>531</y>
-    <width>112</width>
-    <height>14</height>
+    <width>88</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -322,8 +323,8 @@
     <text>(OC3+OC4/N)*I[n])</text>
     <x>755</x>
     <y>474</y>
-    <width>294</width>
-    <height>14</height>
+    <width>119</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -331,8 +332,8 @@
     <text>(FC3+FC4/N)*I[n])</text>
     <x>755</x>
     <y>512</y>
-    <width>294</width>
-    <height>14</height>
+    <width>114</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -340,8 +341,8 @@
     <text>N = value of NumFiltered</text>
     <x>755</x>
     <y>612</y>
-    <width>168</width>
-    <height>14</height>
+    <width>156</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -349,8 +350,8 @@
     <text>F = Stored filter (double precision)</text>
     <x>755</x>
     <y>593</y>
-    <width>252</width>
-    <height>14</height>
+    <width>212</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -358,8 +359,8 @@
     <text>I = Input array in callback</text>
     <x>755</x>
     <y>574</y>
-    <width>189</width>
-    <height>14</height>
+    <width>157</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -367,8 +368,8 @@
     <text>O = Output array passed to clients</text>
     <x>755</x>
     <y>631</y>
-    <width>238</width>
-    <height>14</height>
+    <width>213</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -886,7 +887,8 @@
     <text>OScale</text>
     <x>958</x>
     <y>245</y>
-    <width>60</width>
+    <width>53</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -940,7 +942,8 @@
     <text>FScale</text>
     <x>958</x>
     <y>320</y>
-    <width>60</width>
+    <width>50</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -994,8 +997,8 @@
     <text>F[n] = FOffset + FScale*((FC1+FC2/N)*F[n-1] +</text>
     <x>755</x>
     <y>493</y>
-    <width>315</width>
-    <height>14</height>
+    <width>295</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -1003,8 +1006,8 @@
     <text>O[n] = OOffset + OScale*((OC1+OC2/N)*F[n-1] +</text>
     <x>755</x>
     <y>455</y>
-    <width>322</width>
-    <height>14</height>
+    <width>306</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
@@ -1012,8 +1015,8 @@
     <text>F[0] = ROffset + RC1*F[n] + RC2*I[0]</text>
     <x>755</x>
     <y>550</y>
-    <width>252</width>
-    <height>14</height>
+    <width>230</width>
+    <height>16</height>
     <auto_size>true</auto_size>
   </widget>
   <widget type="textentry" version="3.0.0">
@@ -1167,7 +1170,8 @@
     <text>Enable background</text>
     <x>401</x>
     <y>95</y>
-    <width>170</width>
+    <width>138</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -1246,7 +1250,8 @@
     <text>OOffset</text>
     <x>752</x>
     <y>245</y>
-    <width>70</width>
+    <width>56</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -1294,7 +1299,8 @@
     <text>FOffset</text>
     <x>752</x>
     <y>320</y>
-    <width>70</width>
+    <width>53</width>
+    <height>19</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -1918,7 +1924,7 @@
       <action type="open_display">
         <file>NDProcessTIFF.opi</file>
         <macros>
-          <R>$(R)TIFF:</R>
+          <R>$(R)TIFF2:</R>
         </macros>
         <target>tab</target>
         <description>TIFF file setup</description>
@@ -1933,6 +1939,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #405</name>
@@ -1987,6 +1994,7 @@
       <color red="115" green="223" blue="255">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #414</name>
@@ -2036,7 +2044,7 @@
     </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>composite #424</name>
     <x>442</x>
     <y>610</y>
