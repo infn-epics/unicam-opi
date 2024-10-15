@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-10 19:13:51 by Alex-->
+<!--Saved on 2024-10-15 16:41:38 by Alex-->
 <display version="2.0.0">
+  <height>548</height>
   <background_color>
     <color red="240" green="240" blue="240">
     </color>
@@ -13,8 +14,8 @@
     <name>VImage</name>
     <pv_name>pva://$(DEVICE):$(CAM):PVA:OUTPUT</pv_name>
     <y>42</y>
-    <width>654</width>
-    <height>508</height>
+    <width>648</width>
+    <height>504</height>
     <x_axis>
       <visible>false</visible>
       <title>X</title>
@@ -123,10 +124,10 @@ if val == 1:
         </color>
         <visible>true</visible>
         <interactive>true</interactive>
-        <x_pv>loc://$(DEVICE):$(CAM):roi_x</x_pv>
-        <y_pv>loc://$(DEVICE):$(CAM):roi_y</y_pv>
-        <width_pv>loc://$(DEVICE):$(CAM):roi_w</width_pv>
-        <height_pv>loc://$(DEVICE):$(CAM):roi_h</height_pv>
+        <x_pv>loc://$(DEVICE):$(CAM):roi_x(40)</x_pv>
+        <y_pv>loc://$(DEVICE):$(CAM):roi_y(40)</y_pv>
+        <width_pv>loc://$(DEVICE):$(CAM):roi_w(20)</width_pv>
+        <height_pv>loc://$(DEVICE):$(CAM):roi_h(10)</height_pv>
         <file></file>
       </roi>
     </rois>
@@ -209,5 +210,71 @@ if val == 1:
         <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid_RBV</pv_name>
       </rule>
     </rules>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Image Selector</name>
+    <x>655</x>
+    <y>44</y>
+    <width>136</width>
+    <height>126</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="237" green="236" blue="235">
+      </color>
+    </background_color>
+    <widget type="radio" version="2.0.0">
+      <name>Radio Button</name>
+      <pv_name>loc://ChosenImg(0)</pv_name>
+      <y>3</y>
+      <width>108</width>
+      <height>95</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <scripts>
+        <script file="EmbeddedPy">
+          <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+value=PVUtil.getInt(pvs[0])
+pvToSet=""
+if value == 0:
+	pvToSet="pva://"+prefis+"PVA:OUTPUT"
+elif value == 1:
+    pvToSet="pva://"+prefis+"PROC:OUTPUT"
+elif value == 2:
+     pvToSet="pva://"+prefis+"ROI:OUTPUT"
+elif value == 3:
+     pvToSet="pva://"+prefis+"OVERLAY1:OUTPUT"
+
+
+displ = ScriptUtil.findWidgetByName(widget, "VImage")
+# 
+if displ == None:
+	print 'None'
+else:
+	displ.setPropertyValue('pv_name',pvToSet )
+	print 'OKKK']]></text>
+          <pv_name>loc://ChosenImg</pv_name>
+        </script>
+      </scripts>
+      <items>
+        <item>"Raw"</item>
+        <item>"Processed"</item>
+        <item>"ROI"</item>
+        <item>"Reference"</item>
+      </items>
+      <items_from_pv>false</items_from_pv>
+    </widget>
   </widget>
 </display>

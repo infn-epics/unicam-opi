@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-14 15:57:58 by Alex-->
+<!--Saved on 2024-10-15 16:11:19 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -18,8 +18,8 @@
     <VSTATS>STATS</VSTATS>
     <VTRANS>TRANS</VTRANS>
   </macros>
-  <width>1095</width>
-  <height>910</height>
+  <width>1195</width>
+  <height>818</height>
   <background_color>
     <color red="237" green="236" blue="235">
     </color>
@@ -31,9 +31,9 @@
   <widget type="embedded" version="2.0.0">
     <name>CameraImage</name>
     <file>Camera_ColorImagePanel.bob</file>
-    <x>395</x>
+    <x>373</x>
     <y>85</y>
-    <width>661</width>
+    <width>800</width>
     <height>560</height>
     <actions>
     </actions>
@@ -45,7 +45,7 @@
   <widget type="label" version="2.0.0">
     <name>Title Banner</name>
     <text>Camera - $(DEVICE):$(CAM)</text>
-    <width>1056</width>
+    <width>1195</width>
     <height>45</height>
     <font>
       <font name="STAR-CS" family="sans" style="REGULAR" size="23.762376237623762">
@@ -78,217 +78,16 @@
     <width>352</width>
     <height>667</height>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>CheckBoxROI</name>
-    <pv_name>loc://roiVisible(0)</pv_name>
-    <label>Show ROI</label>
-    <x>405</x>
-    <y>660</y>
-    <actions>
-      <action type="execute">
-        <script file="EmbeddedPy">
-          <text><![CDATA[# Embedded python script
-from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-
-camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
-ellipse_widget = ScriptUtil.findWidgetByName(widget,"LabelTEST")  # Ottiene il widget con ID
-ellipse_widget.setPropertyValue("text","ACORNUTO")
-macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
-if macro_device is None:
-        raise Exception("La macro 'DEVICE' non è definita")
-macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
-if macro_cam is None:
-        raise Exception("La macro 'CAM' non è definita")
-prefis=macro_device+':'+macro_cam+":"
-
-p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
-p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
-roiW=PVUtil.getInt(p_roi_w)
-roiH=PVUtil.getInt(p_roi_h)
-
-if roiW == 0  or roiY == 0:
-	PVUtil.setValue(p_roi_w,10)
-	PVUtil.setValue(p_roi_h,20)]]></text>
-        </script>
-        <description>Execute Script</description>
-      </action>
-    </actions>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Apply ROI Button</name>
-    <actions>
-      <action type="execute">
-        <script file="EmbeddedPy">
-          <text><![CDATA[# Embedded python script
-from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-print 'Hello'
-camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
-#label_widget = ScriptUtil.findWidgetByName(widget,"LabelTEST")  # Ottiene il widget con ID
-macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
-if macro_device is None:
-        raise Exception("La macro 'DEVICE' non è definita")
-macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
-if macro_cam is None:
-        raise Exception("La macro 'CAM' non è definita")
-prefis=macro_device+':'+macro_cam+":"
-
-pname=prefis+"SizeX_RBV"
-pvx = PVUtil.createPV(pname,1000)
-X_Img = PVUtil.getDouble(pvx)
-
-pname=prefis+"SizeY_RBV"
-pvy=PVUtil.createPV(pname,1000)
-Y_Img=PVUtil.getDouble(pvy)
-
-p_roi_x=PVUtil.createPV("loc://"+prefis+"roi_x",1000)
-p_roi_y=PVUtil.createPV("loc://"+prefis+"roi_y",1000)
-p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
-p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
-
-roiX=PVUtil.getInt(p_roi_x)
-roiY=PVUtil.getInt(p_roi_y)
-roiW=PVUtil.getInt(p_roi_w)
-roiH=PVUtil.getInt(p_roi_h)
-
-#L'immagine è sempre in percentuale 0 -100
-#Rispetto alle camere, la Y è ribaltata e quindi vale 0 in basso invece che in alto. Per ottenere la locazione corretta, la ribalto
-realY= (100-roiY)-roiH
-
-
-xToSet= (roiX*X_Img ) / 100 
-yToSet= (realY*Y_Img) / 100 
-
-#wToSet : roiW=X_Img : 100
-
-wToSet=(roiW*X_Img)/100
-hToSet=(roiH*Y_Img)/100
-
-#label_widget.setPropertyValue("text", str(X_Img)+":"+str(Y_Img)+ "ROI "+ str(roiX)+":"+str(realY)+":"+str(roiW)+":"+str(roiH)) 
-#label_widget.setPropertyValue("text", str(xToSet)+":"+str(yToSet)+" W: "+str(wToSet)+ " H: "+str(hToSet)) 
-
-pname=prefis+"SizeX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(wToSet)
-
-pname=prefis+"SizeY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(hToSet)
-
-pname=prefis+"MinX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(xToSet)
-
-pname=prefis+"MinY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(yToSet)
-
-pname="loc://roiVisible"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(0)
-
-#widget.setPropertyValue('text', "Done")
-]]></text>
-        </script>
-        <description>Execute Script</description>
-      </action>
-    </actions>
-    <text>APPLY ROI</text>
-    <x>405</x>
-    <y>690</y>
-    <rules>
-      <rule name="Visibility Rule" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0 == 1">
-          <value>true</value>
-        </exp>
-        <exp bool_exp="pv0 == 0">
-          <value>false</value>
-        </exp>
-        <pv_name>loc://roiVisible</pv_name>
-      </rule>
-    </rules>
-    <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="execute">
-        <script file="EmbeddedPy">
-          <text><![CDATA[# Embedded python script
-from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-
-camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
-
-macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
-if macro_device is None:
-        raise Exception("La macro 'DEVICE' non è definita")
-macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
-if macro_cam is None:
-        raise Exception("La macro 'CAM' non è definita")
-prefis=macro_device+':'+macro_cam+":"
-
-pname=prefis+"MinX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(0)
-
-pname=prefis+"MinY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(0)
-
-
-pname=prefis+"MaxSizeX_RBV"
-pv = PVUtil.createPV(pname,1000)
-MaxX=PVUtil.getInt(pv)
-
-pname=prefis+"MaxSizeY_RBV"
-pv = PVUtil.createPV(pname,1000)
-MaxY=PVUtil.getInt(pv)
-
-pname=prefis+"SizeX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(MaxX)
-
-pname=prefis+"SizeY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(MaxY)
-
-p_roi_x=PVUtil.createPV("loc://"+prefis+"roi_x",1000)
-p_roi_y=PVUtil.createPV("loc://"+prefis+"roi_y",1000)
-p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
-p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
-roiX=PVUtil.getInt(p_roi_x)
-roiY=PVUtil.getInt(p_roi_y)
-
-
-p_roi_x.setValue(50)
-p_roi_y.setValue(50)
-p_roi_w.setValue(10)
-p_roi_h.setValue(20)]]></text>
-        </script>
-        <description>Execute Script</description>
-      </action>
-    </actions>
-    <text>Reset ROI</text>
-    <x>405</x>
-    <y>740</y>
-    <rules>
-      <rule name="visibility rule" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>true</value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>false</value>
-        </exp>
-        <pv_name>loc://roiVisible</pv_name>
-      </rule>
-    </rules>
-    <tooltip>$(actions)</tooltip>
-  </widget>
   <widget type="group" version="3.0.0">
     <name>Centroid</name>
     <x>535</x>
-    <y>705</y>
+    <y>683</y>
     <width>220</width>
-    <height>95</height>
+    <height>113</height>
+    <background_color>
+      <color red="237" green="236" blue="235">
+      </color>
+    </background_color>
     <rules>
       <rule name="VisibilityRule" prop_id="visible" out_exp="false">
         <exp bool_exp="pv0==0">
@@ -365,16 +164,81 @@ p_roi_h.setValue(20)]]></text>
       <height>17</height>
     </widget>
   </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_2</name>
-    <actions>
-      <action type="execute">
-        <script file="EmbeddedPy">
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button_2</name>
+    <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid</pv_name>
+    <x>692</x>
+    <y>652</y>
+    <width>50</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Centroid</text>
+    <x>580</x>
+    <y>650</y>
+    <width>72</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="15.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>ROI</name>
+    <x>385</x>
+    <y>635</y>
+    <width>135</width>
+    <height>165</height>
+    <background_color>
+      <color red="237" green="236" blue="235">
+      </color>
+    </background_color>
+    <widget type="checkbox" version="2.0.0">
+      <name>CheckBoxROI</name>
+      <pv_name>loc://roiVisible(0)</pv_name>
+      <label>Show ROI</label>
+      <x>2</x>
+      <y>12</y>
+      <actions>
+      </actions>
+      <scripts>
+        <script file="EmbeddedPy" check_connections="false">
           <text><![CDATA[# Embedded python script
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-print 'ALE'
-val=-1
 
+
+val= PVUtil.getInt(pvs[0])
+pv2 = pvs[2]
+pv4 = pvs[4]
+if val==1:
+	pvs[1].setValue(40)
+	if hasattr(pvs[2], 'setValue'):
+   		 pvs[2].setValue(40)
+	else:
+    		print("pvs[2] non ha il metodo setValue")
+	pvs[3].setValue(20)
+	if hasattr(pvs[4], 'setValue'):
+   		 pvs[4].setValue(10)
+	else:
+    		print("pvs[4] non ha il metodo setValue")
+
+
+]]></text>
+          <pv_name>loc://roiVisible</pv_name>
+          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_x</pv_name>
+          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_y</pv_name>
+          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_w</pv_name>
+          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_h</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Apply ROI Button</name>
+      <actions>
+        <action type="execute">
+          <script file="EmbeddedPy">
+            <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+print 'Hello'
 camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
 #label_widget = ScriptUtil.findWidgetByName(widget,"LabelTEST")  # Ottiene il widget con ID
 macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
@@ -383,28 +247,158 @@ if macro_device is None:
 macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
 if macro_cam is None:
         raise Exception("La macro 'CAM' non è definita")
-prefix=macro_device+':'+macro_cam+":"
+prefis=macro_device+':'+macro_cam+":"
 
-pname=prefix+"Stats1:ComputeCentroid_RBV"
+pname=prefis+"SizeX_RBV"
 pvx = PVUtil.createPV(pname,1000)
-val = PVUtil.getInt(pvx)
-print("Valore della PV:", val)
+X_Img = PVUtil.getDouble(pvx)
+
+pname=prefis+"SizeY_RBV"
+pvy=PVUtil.createPV(pname,1000)
+Y_Img=PVUtil.getDouble(pvy)
+
+p_roi_x=PVUtil.createPV("loc://"+prefis+"roi_x",1000)
+p_roi_y=PVUtil.createPV("loc://"+prefis+"roi_y",1000)
+p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
+p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
+
+roiX=PVUtil.getInt(p_roi_x)
+roiY=PVUtil.getInt(p_roi_y)
+roiW=PVUtil.getInt(p_roi_w)
+roiH=PVUtil.getInt(p_roi_h)
+
+#L'immagine è sempre in percentuale 0 -100
+#Rispetto alle camere, la Y è ribaltata e quindi vale 0 in basso invece che in alto. Per ottenere la locazione corretta, la ribalto
+realY= (100-roiY)-roiH
+
+
+xToSet= (roiX*X_Img ) / 100 
+yToSet= (realY*Y_Img) / 100 
+
+#wToSet : roiW=X_Img : 100
+
+wToSet=(roiW*X_Img)/100
+hToSet=(roiH*Y_Img)/100
+
+#label_widget.setPropertyValue("text", str(X_Img)+":"+str(Y_Img)+ "ROI "+ str(roiX)+":"+str(realY)+":"+str(roiW)+":"+str(roiH)) 
+#label_widget.setPropertyValue("text", str(xToSet)+":"+str(yToSet)+" W: "+str(wToSet)+ " H: "+str(hToSet)) 
+
+pname=prefis+"SizeX"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(wToSet)
+
+pname=prefis+"SizeY"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(hToSet)
+
+pname=prefis+"MinX"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(xToSet)
+
+pname=prefis+"MinY"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(yToSet)
+
+pname="loc://roiVisible"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(0)
+
+#widget.setPropertyValue('text', "Done")
 ]]></text>
-        </script>
-        <description>Execute Script</description>
-      </action>
-    </actions>
-    <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid</pv_name>
-    <x>535</x>
-    <y>660</y>
-    <width>115</width>
-    <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="bool_button" version="2.0.0">
-    <name>Boolean Button_2</name>
-    <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid</pv_name>
-    <x>670</x>
-    <y>660</y>
-    <width>50</width>
+          </script>
+          <description>Execute Script</description>
+        </action>
+      </actions>
+      <text>APPLY ROI</text>
+      <x>2</x>
+      <y>42</y>
+      <rules>
+        <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0 == 1">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="pv0 == 0">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://roiVisible</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="execute">
+          <script file="EmbeddedPy">
+            <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
+
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+
+pname=prefis+"MinX"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(0)
+
+pname=prefis+"MinY"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(0)
+
+
+pname=prefis+"MaxSizeX_RBV"
+pv = PVUtil.createPV(pname,1000)
+MaxX=PVUtil.getInt(pv)
+
+pname=prefis+"MaxSizeY_RBV"
+pv = PVUtil.createPV(pname,1000)
+MaxY=PVUtil.getInt(pv)
+
+pname=prefis+"SizeX"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(MaxX)
+
+pname=prefis+"SizeY"
+pv = PVUtil.createPV(pname,1000)
+pv.setValue(MaxY)
+
+p_roi_x=PVUtil.createPV("loc://"+prefis+"roi_x",1000)
+p_roi_y=PVUtil.createPV("loc://"+prefis+"roi_y",1000)
+p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
+p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
+roiX=PVUtil.getInt(p_roi_x)
+roiY=PVUtil.getInt(p_roi_y)
+
+
+p_roi_x.setValue(50)
+p_roi_y.setValue(50)
+p_roi_w.setValue(10)
+p_roi_h.setValue(20)]]></text>
+          </script>
+          <description>Execute Script</description>
+        </action>
+      </actions>
+      <text>Reset ROI</text>
+      <x>2</x>
+      <y>92</y>
+      <rules>
+        <rule name="visibility rule" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="pv0==0">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://roiVisible</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(actions)</tooltip>
+    </widget>
   </widget>
 </display>

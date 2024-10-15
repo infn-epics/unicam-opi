@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-14 16:03:39 by Alex-->
+<!--Saved on 2024-10-15 16:08:07 by Alex-->
 <display version="2.0.0">
   <name>Camera</name>
   <macros>
@@ -10,7 +10,7 @@
     <STATS>STATS1</STATS>
     <HW>HW</HW>
   </macros>
-  <width>1204</width>
+  <width>1247</width>
   <height>930</height>
   <background_color>
     <color name="IO Grid" red="215" green="215" blue="215">
@@ -25,33 +25,14 @@
   <grid_step_y>5</grid_step_y>
   <widget type="group" version="3.0.0">
     <name>Group_2</name>
-    <x>57</x>
+    <x>40</x>
     <y>28</y>
-    <width>1090</width>
+    <width>1195</width>
     <height>874</height>
     <style>3</style>
-    <widget type="embedded" version="2.0.0">
-      <name>Linking Container Template</name>
-      <file>Camera_Main.bob</file>
-      <y>1</y>
-      <width>1056</width>
-      <height>840</height>
-      <transparent>true</transparent>
-      <actions>
-      </actions>
-      <scripts>
-        <script file="Scripts/DeviceSelectDefault.py">
-          <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
-        </script>
-      </scripts>
-      <border_color>
-        <color name="IO Border" red="215" green="215" blue="215">
-        </color>
-      </border_color>
-    </widget>
     <widget type="group" version="3.0.0">
       <name>Group_1</name>
-      <x>28</x>
+      <x>20</x>
       <y>57</y>
       <width>331</width>
       <height>46</height>
@@ -103,5 +84,25 @@
         <items_from_pv>false</items_from_pv>
       </widget>
     </widget>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container Template</name>
+    <file>Camera_Main.bob</file>
+    <x>40</x>
+    <y>28</y>
+    <width>1207</width>
+    <height>902</height>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <scripts>
+      <script file="Scripts/DeviceSelectDefault.py">
+        <pv_name>loc://DeviceName_$(DID)&lt;VString&gt;("")</pv_name>
+      </script>
+    </scripts>
+    <border_color>
+      <color name="IO Border" red="215" green="215" blue="215">
+      </color>
+    </border_color>
   </widget>
 </display>
