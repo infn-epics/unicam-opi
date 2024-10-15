@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-15 16:11:19 by Alex-->
+<!--Saved on 2024-10-15 19:02:13 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -309,9 +309,13 @@ pv.setValue(0)
           <description>Execute Script</description>
         </action>
       </actions>
-      <text>APPLY ROI</text>
+      <text>APPLY ROI HW</text>
       <x>2</x>
       <y>42</y>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
       <rules>
         <rule name="Visibility Rule" prop_id="visible" out_exp="false">
           <exp bool_exp="pv0 == 1">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-15 16:41:38 by Alex-->
+<!--Saved on 2024-10-15 20:07:27 by Alex-->
 <display version="2.0.0">
   <height>548</height>
   <background_color>
@@ -227,7 +227,7 @@ if val == 1:
     </background_color>
     <widget type="radio" version="2.0.0">
       <name>Radio Button</name>
-      <pv_name>loc://ChosenImg(0)</pv_name>
+      <pv_name>loc://ChosenImg</pv_name>
       <y>3</y>
       <width>108</width>
       <height>95</height>
@@ -253,7 +253,7 @@ if value == 0:
 elif value == 1:
     pvToSet="pva://"+prefis+"PROC:OUTPUT"
 elif value == 2:
-     pvToSet="pva://"+prefis+"ROI:OUTPUT"
+     pvToSet="pva://"+prefis+"ROI1:OUTPUT"
 elif value == 3:
      pvToSet="pva://"+prefis+"OVERLAY1:OUTPUT"
 
@@ -269,10 +269,10 @@ else:
         </script>
       </scripts>
       <items>
-        <item>"Raw"</item>
-        <item>"Processed"</item>
-        <item>"ROI"</item>
-        <item>"Reference"</item>
+        <item>Raw</item>
+        <item>Processed</item>
+        <item>ROI</item>
+        <item>Reference</item>
       </items>
       <items_from_pv>false</items_from_pv>
     </widget>
