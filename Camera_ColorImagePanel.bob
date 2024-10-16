@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-15 20:07:27 by Alex-->
+<!--Saved on 2024-10-16 11:56:45 by Alex-->
 <display version="2.0.0">
   <height>548</height>
   <background_color>
@@ -227,7 +227,7 @@ if val == 1:
     </background_color>
     <widget type="radio" version="2.0.0">
       <name>Radio Button</name>
-      <pv_name>loc://ChosenImg</pv_name>
+      <pv_name>loc://ChosenImg(0)</pv_name>
       <y>3</y>
       <width>108</width>
       <height>95</height>
@@ -239,6 +239,8 @@ if val == 1:
         <script file="EmbeddedPy">
           <text><![CDATA[# Embedded python script
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+
 macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
 if macro_device is None:
         raise Exception("La macro 'DEVICE' non è definita")
@@ -263,8 +265,9 @@ displ = ScriptUtil.findWidgetByName(widget, "VImage")
 if displ == None:
 	print 'None'
 else:
-	displ.setPropertyValue('pv_name',pvToSet )
-	print 'OKKK']]></text>
+	if  pvToSet != "":
+		displ.setPropertyValue('pv_name',pvToSet )
+		print 'OKKK']]></text>
           <pv_name>loc://ChosenImg</pv_name>
         </script>
       </scripts>
