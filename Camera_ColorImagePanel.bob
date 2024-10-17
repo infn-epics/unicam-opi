@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-16 11:56:45 by Alex-->
+<!--Saved on 2024-10-17 16:01:52 by Alex-->
 <display version="2.0.0">
   <height>548</height>
   <background_color>
@@ -16,34 +16,6 @@
     <y>42</y>
     <width>648</width>
     <height>504</height>
-    <x_axis>
-      <visible>false</visible>
-      <title>X</title>
-      <minimum>0.0</minimum>
-      <maximum>100.0</maximum>
-      <title_font>
-        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-        </font>
-      </title_font>
-      <scale_font>
-        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
-        </font>
-      </scale_font>
-    </x_axis>
-    <y_axis>
-      <visible>false</visible>
-      <title>Y</title>
-      <minimum>0.0</minimum>
-      <maximum>100.0</maximum>
-      <title_font>
-        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-        </font>
-      </title_font>
-      <scale_font>
-        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
-        </font>
-      </scale_font>
-    </y_axis>
     <actions>
     </actions>
     <rules>
@@ -115,9 +87,10 @@ if val == 1:
         <pv_name>pva://$(DEVICE):$(CAM):PVA:OUTPUT</pv_name>
       </script>
     </scripts>
+    <limits_from_pv>true</limits_from_pv>
     <rois>
       <roi>
-        <name>ROI 0</name>
+        <name>ROI</name>
         <color>
           <color red="255" green="0" blue="0">
           </color>
@@ -169,7 +142,7 @@ if val == 1:
     <x>12</x>
     <y>12</y>
     <width>74</width>
-    <height>17</height>
+    <height>16</height>
     <font>
       <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
       </font>
@@ -226,8 +199,8 @@ if val == 1:
       </color>
     </background_color>
     <widget type="radio" version="2.0.0">
-      <name>Radio Button</name>
-      <pv_name>loc://ChosenImg(0)</pv_name>
+      <name>RadioButtonSource</name>
+      <pv_name>loc://$(DEVICE):$(CAM):ChosenImg(0)</pv_name>
       <y>3</y>
       <width>108</width>
       <height>95</height>
@@ -253,9 +226,9 @@ pvToSet=""
 if value == 0:
 	pvToSet="pva://"+prefis+"PVA:OUTPUT"
 elif value == 1:
-    pvToSet="pva://"+prefis+"PROC:OUTPUT"
+    pvToSet="pva://"+prefis+"ROI1:OUTPUT"
 elif value == 2:
-     pvToSet="pva://"+prefis+"ROI1:OUTPUT"
+     pvToSet="pva://"+prefis+"PROC:OUTPUT"
 elif value == 3:
      pvToSet="pva://"+prefis+"OVERLAY1:OUTPUT"
 
@@ -267,17 +240,64 @@ if displ == None:
 else:
 	if  pvToSet != "":
 		displ.setPropertyValue('pv_name',pvToSet )
-		print 'OKKK']]></text>
-          <pv_name>loc://ChosenImg</pv_name>
+		#print 'OKKK']]></text>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
         </script>
       </scripts>
       <items>
         <item>Raw</item>
-        <item>Processed</item>
         <item>ROI</item>
+        <item>Processed</item>
         <item>Reference</item>
       </items>
       <items_from_pv>false</items_from_pv>
     </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+valore_pv =PVUtil.getInt(pvChosen)
+
+
+# Controlla il valore della PV e apri il display corrispondente
+if valore_pv == 0:
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):"     }
+    ScriptUtil.openDisplay(widget, "genicam/ADAravis.bob","3",macros )
+elif valore_pv == 1:
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Roi1:"     }
+    ScriptUtil.openDisplay(widget, "genicam/NDRoi.bob","3",macros )
+elif valore_pv == 2:
+    macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:"     }
+    ScriptUtil.openDisplay(widget, "genicam/NDProcess.bob","3",macros )
+elif valore_pv == 3:
+     macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay1:"      }
+     ScriptUtil.openDisplay(widget, "genicam/NDOverlay.bob","3",macros )
+else:
+    print 'out value'
+    # Valore non previsto, puoi gestire il caso di default
+    #ScriptUtil.openDisplay(widget, "path/to/default_display.bob")
+]]></text>
+        </script>
+        <description>Execute Script</description>
+      </action>
+    </actions>
+    <text>Settings</text>
+    <x>660</x>
+    <y>186</y>
+    <width>119</width>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>

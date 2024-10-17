@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-15 19:02:13 by Alex-->
+<!--Saved on 2024-10-17 19:29:31 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -170,6 +170,13 @@
     <x>692</x>
     <y>652</y>
     <width>50</width>
+    <actions>
+      <action type="open_display">
+        <file>genicam/NDStats.bob</file>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
@@ -195,29 +202,56 @@
     <widget type="checkbox" version="2.0.0">
       <name>CheckBoxROI</name>
       <pv_name>loc://roiVisible(0)</pv_name>
-      <label>Show ROI</label>
-      <x>2</x>
+      <label>Show Selection</label>
       <y>12</y>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
       <actions>
       </actions>
       <scripts>
         <script file="EmbeddedPy" check_connections="false">
           <text><![CDATA[# Embedded python script
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
 
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+
+
+
+
+pname=prefis+"SizeX_RBV"
+pvx = PVUtil.createPV(pname,1000)
+X_Img = PVUtil.getDouble(pvx)
+
+pname=prefis+"SizeY_RBV"
+pvy=PVUtil.createPV(pname,1000)
+Y_Img=PVUtil.getDouble(pvy)
+
+xV=X_Img / 5
+yV = Y_Img /5
+wV=X_Img/4
+hV=Y_Img/4
 
 val= PVUtil.getInt(pvs[0])
 pv2 = pvs[2]
 pv4 = pvs[4]
 if val==1:
-	pvs[1].setValue(40)
+	pvs[1].setValue(xV)
 	if hasattr(pvs[2], 'setValue'):
-   		 pvs[2].setValue(40)
+   		 pvs[2].setValue(yV)
 	else:
     		print("pvs[2] non ha il metodo setValue")
-	pvs[3].setValue(20)
+	pvs[3].setValue(wV)
 	if hasattr(pvs[4], 'setValue'):
-   		 pvs[4].setValue(10)
+   		 pvs[4].setValue(hV)
 	else:
     		print("pvs[4] non ha il metodo setValue")
 
@@ -238,7 +272,7 @@ if val==1:
           <script file="EmbeddedPy">
             <text><![CDATA[# Embedded python script
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-print 'Hello'
+
 camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
 #label_widget = ScriptUtil.findWidgetByName(widget,"LabelTEST")  # Ottiene il widget con ID
 macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
@@ -269,35 +303,49 @@ roiH=PVUtil.getInt(p_roi_h)
 
 #L'immagine è sempre in percentuale 0 -100
 #Rispetto alle camere, la Y è ribaltata e quindi vale 0 in basso invece che in alto. Per ottenere la locazione corretta, la ribalto
-realY= (100-roiY)-roiH
+#realY= (100-roiY)-roiH
 
 
-xToSet= (roiX*X_Img ) / 100 
-yToSet= (realY*Y_Img) / 100 
+#xToSet= (roiX*X_Img ) / 100 
+#yToSet= (realY*Y_Img) / 100 
 
 #wToSet : roiW=X_Img : 100
 
-wToSet=(roiW*X_Img)/100
-hToSet=(roiH*Y_Img)/100
+#wToSet=(roiW*X_Img)/100
+#hToSet=(roiH*Y_Img)/100
 
 #label_widget.setPropertyValue("text", str(X_Img)+":"+str(Y_Img)+ "ROI "+ str(roiX)+":"+str(realY)+":"+str(roiW)+":"+str(roiH)) 
 #label_widget.setPropertyValue("text", str(xToSet)+":"+str(yToSet)+" W: "+str(wToSet)+ " H: "+str(hToSet)) 
 
-pname=prefis+"SizeX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(wToSet)
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+chosenValue=PVUtil.getInt(pvChosen)
 
-pname=prefis+"SizeY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(hToSet)
 
-pname=prefis+"MinX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(xToSet)
 
-pname=prefis+"MinY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(yToSet)
+#SETTINGS
+if chosenValue == 0 or chosenValue == 1:
+	if chosenValue == 1:
+		prefis+="Roi1:"
+	pname=prefis+"SizeX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiW)
+
+	pname=prefis+"SizeY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiH)
+
+	pname=prefis+"MinX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiX)
+
+	pname=prefis+"MinY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiY)
+
+	
+
+
 
 pname="loc://roiVisible"
 pv = PVUtil.createPV(pname,1000)
@@ -347,15 +395,6 @@ if macro_cam is None:
         raise Exception("La macro 'CAM' non è definita")
 prefis=macro_device+':'+macro_cam+":"
 
-pname=prefis+"MinX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(0)
-
-pname=prefis+"MinY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(0)
-
-
 pname=prefis+"MaxSizeX_RBV"
 pv = PVUtil.createPV(pname,1000)
 MaxX=PVUtil.getInt(pv)
@@ -364,26 +403,60 @@ pname=prefis+"MaxSizeY_RBV"
 pv = PVUtil.createPV(pname,1000)
 MaxY=PVUtil.getInt(pv)
 
-pname=prefis+"SizeX"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(MaxX)
 
-pname=prefis+"SizeY"
-pv = PVUtil.createPV(pname,1000)
-pv.setValue(MaxY)
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+chosenValue=PVUtil.getInt(pvChosen)
 
+
+
+
+if chosenValue < 3:
+	if chosenValue == 1 or chosenValue == 2:
+		prefis+="Roi1:"
+	pname=prefis+"MinX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(0)
+
+	pname=prefis+"MinY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(0)
+
+	pname=prefis+"SizeX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(MaxX)
+
+	pname=prefis+"SizeY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(MaxY)
+else:
+	pass
+
+
+prefis=macro_device+':'+macro_cam+":"
 p_roi_x=PVUtil.createPV("loc://"+prefis+"roi_x",1000)
 p_roi_y=PVUtil.createPV("loc://"+prefis+"roi_y",1000)
 p_roi_w=PVUtil.createPV("loc://"+prefis+"roi_w",1000)
 p_roi_h=PVUtil.createPV("loc://"+prefis+"roi_h",1000)
-roiX=PVUtil.getInt(p_roi_x)
-roiY=PVUtil.getInt(p_roi_y)
+
+pname=prefis+"SizeX_RBV"
+pvx = PVUtil.createPV(pname,1000)
+X_Img = PVUtil.getDouble(pvx)
+
+pname=prefis+"SizeY_RBV"
+pvy=PVUtil.createPV(pname,1000)
+Y_Img=PVUtil.getDouble(pvy)
 
 
-p_roi_x.setValue(50)
-p_roi_y.setValue(50)
-p_roi_w.setValue(10)
-p_roi_h.setValue(20)]]></text>
+
+xV=X_Img / 5
+yV = Y_Img /5
+wV=X_Img/4
+hV=Y_Img/4
+p_roi_x.setValue(xV)
+p_roi_y.setValue(yV)
+p_roi_w.setValue(wV)
+p_roi_h.setValue(hV)]]></text>
           </script>
           <description>Execute Script</description>
         </action>
@@ -404,5 +477,45 @@ p_roi_h.setValue(20)]]></text>
       </rules>
       <tooltip>$(actions)</tooltip>
     </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="open_display">
+        <file>genicam/NDPlot.bob</file>
+        <macros>
+          <P>$(DEVICE):</P>
+          <R>$(CAM):</R>
+          <DATA>Stats1:Histogram_RBV</DATA>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>HST</text>
+    <x>775</x>
+    <y>650</y>
+    <width>80</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <actions>
+      <action type="open_display">
+        <file>genicam/NDStats.bob</file>
+        <macros>
+          <P>$(DEVICE):</P>
+          <R>$(CAM):Stats1:</R>
+        </macros>
+        <target>window</target>
+        <description>Open Display</description>
+      </action>
+    </actions>
+    <text>TEST</text>
+    <x>790</x>
+    <y>710</y>
+    <width>65</width>
+    <visible>false</visible>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>
