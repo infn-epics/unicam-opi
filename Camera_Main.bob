@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-17 19:29:31 by Alex-->
+<!--Saved on 2024-10-18 15:02:40 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -342,7 +342,25 @@ if chosenValue == 0 or chosenValue == 1:
 	pname=prefis+"MinY"
 	pv = PVUtil.createPV(pname,1000)
 	pv.setValue(roiY)
+elif chosenValue == 3:
+	prefis+="Overlay1:"
+	
+	pname=prefis+"PositionX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiX)
 
+	pname=prefis+"PositionY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiY)
+
+	pname=prefis+"SizeX"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiW)
+
+	pname=prefis+"SizeY"
+	pv = PVUtil.createPV(pname,1000)
+	pv.setValue(roiH)
+	pass
 	
 
 
@@ -373,6 +391,21 @@ pv.setValue(0)
             <value>false</value>
           </exp>
           <pv_name>loc://roiVisible</pv_name>
+        </rule>
+        <rule name="label Rule" prop_id="text" out_exp="false">
+          <exp bool_exp="pv0==0">
+            <value>APPLY ROI HW</value>
+          </exp>
+          <exp bool_exp="pv0 == 1">
+            <value>APPLY ROI SW</value>
+          </exp>
+          <exp bool_exp="pv0 == 3">
+            <value>APPLY REF</value>
+          </exp>
+          <exp bool_exp="pv0 == 2">
+            <value>DO NOTHING</value>
+          </exp>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
         </rule>
       </rules>
       <tooltip>$(actions)</tooltip>
