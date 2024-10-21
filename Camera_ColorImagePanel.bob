@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-18 11:16:37 by Alex-->
+<!--Saved on 2024-10-21 18:20:51 by Alex-->
 <display version="2.0.0">
   <height>548</height>
   <background_color>
@@ -41,8 +41,20 @@ if macro_device is None:
 macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
 if macro_cam is None:
         raise Exception("La macro 'CAM' non è definita")
-prefix=macro_device+':'+macro_cam+":" +"Stats1"+":"
 prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+valore_pv =PVUtil.getInt(pvChosen)
+added=""
+if valore_pv == 0:
+	pass;
+elif valore_pv == 1:
+	added="Roi1:"
+elif valore_pv == 2:
+	added = "Proc1:"
+
+prefix=macro_device+':'+macro_cam+":" +added+"Stats1"+":"
+
 
 pname=prefix+"ComputeCentroid_RBV"
 pvx = PVUtil.createPV(pname,1000)
@@ -85,6 +97,8 @@ if val == 1:
     		ellipse_widget.setPropertyValue("height", HCen* 2)
 ]]></text>
         <pv_name>pva://$(DEVICE):$(CAM):PVA:OUTPUT</pv_name>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+        <pv_name>pva://$(DEVICE):$(CAM):PROC:OUTPUT</pv_name>
       </script>
     </scripts>
     <limits_from_pv>true</limits_from_pv>
@@ -174,13 +188,22 @@ if val == 1:
     </background_color>
     <rules>
       <rule name="Visibility" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0 ==1">
-          <value>true</value>
-        </exp>
-        <exp bool_exp="pv0 == 0">
+        <exp bool_exp="pv0 == 3">
           <value>false</value>
         </exp>
+        <exp bool_exp="pv0 == 0 and pv1 == 0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pv0 == 1 and pv2 == 0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pv0== 2 and pv3 == 0">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
         <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid_RBV</pv_name>
+        <pv_name>$(DEVICE):$(CAM):Roi1:Stats1:ComputeCentroid_RBV</pv_name>
+        <pv_name>$(DEVICE):$(CAM):Proc1:Stats1:ComputeCentroid_RBV</pv_name>
       </rule>
     </rules>
   </widget>
@@ -223,18 +246,22 @@ if macro_cam is None:
 prefis=macro_device+':'+macro_cam+":"
 value=PVUtil.getInt(pvs[0])
 pvToSet=""
+
 if value == 0:
 	pvToSet="pva://"+prefis+"PVA:OUTPUT"
+	
 elif value == 1:
     pvToSet="pva://"+prefis+"ROI1:OUTPUT"
+   
 elif value == 2:
      pvToSet="pva://"+prefis+"PROC:OUTPUT"
+   
 elif value == 3:
      pvToSet="pva://"+prefis+"OVERLAY1:OUTPUT"
-
+   
 
 displ = ScriptUtil.findWidgetByName(widget, "VImage")
-# 
+
 if displ == None:
 	print 'None'
 else:
@@ -254,7 +281,7 @@ else:
     </widget>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
+    <name>Setting Button</name>
     <actions>
       <action type="execute">
         <script file="EmbeddedPy">
@@ -298,6 +325,210 @@ else:
     <x>660</x>
     <y>186</y>
     <width>119</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Histogram Button</name>
+    <actions execute_as_one="true">
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+valore_pv =PVUtil.getInt(pvChosen)
+
+
+
+
+
+# Controlla il valore della PV e apri il display corrispondente
+if valore_pv == 0:
+    pname=prefis+"Stats1:ComputeHistogram"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(1)
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):", "DATA":"Stats1:Histogram_RBV" ,"TITLE": "Raw Histogram"    }
+    ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","3",macros )
+elif valore_pv == 1:
+    pname=prefis+"Roi1:Stats1:ComputeHistogram"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(1)
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Roi1:" , "DATA":"Stats1:Histogram_RBV"  ,"TITLE": "ROI Histogram"    }
+    ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","3",macros )
+elif valore_pv == 2:
+    pname=prefis+"Proc1:Stats1:ComputeHistogram"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(1)
+    macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:"  ,"DATA":"Stats1:Histogram_RBV"  ,"TITLE": "Processed Histogram"    }
+    ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","3",macros )
+elif valore_pv == 3:
+      pass
+     #macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay1:"  ,"DATA":"Stats1:Histogram_RBV"    }
+     #ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","3",macros )
+else:
+    print 'out value']]></text>
+        </script>
+        <description>Execute Script</description>
+      </action>
+    </actions>
+    <text>Histogram</text>
+    <x>660</x>
+    <y>228</y>
+    <width>119</width>
+    <rules>
+      <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0 == 3">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pv0 &lt; 3">
+          <value>true</value>
+        </exp>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+      </rule>
+    </rules>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>CentroidButton</name>
+    <actions>
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+valore_pv =PVUtil.getInt(pvChosen)
+
+
+# Controlla il valore della PV e apri il display corrispondente
+if valore_pv == 0:
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Stats1:"     }
+    ScriptUtil.openDisplay(widget, "genicam/NDStats.bob","3",macros )
+elif valore_pv == 1:
+    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Roi1:Stats1:"     }
+    ScriptUtil.openDisplay(widget, "genicam/NDStats.bob","3",macros )
+elif valore_pv == 2:
+    macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:Stats1:"     }
+    ScriptUtil.openDisplay(widget, "genicam/NDStats.bob","3",macros )]]></text>
+        </script>
+        <description>Open Specific Display</description>
+      </action>
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+choice_val=PVUtil.getInt(pvChosen)
+
+
+
+if choice_val== 0:
+           pname=prefis+"Stats1:ComputeCentroid"
+elif choice_val == 1:
+	    pname=prefis+"Roi1:Stats1:ComputeCentroid"
+elif choice_val == 2:
+	    pname=prefis+"Proc1:Stats1:ComputeCentroid"
+else:
+	exit
+pv = PVUtil.createPV(pname,1000)
+current=PVUtil.getInt(pv)
+if current == 0:
+   	pv.setValue(1)
+else:
+        pv.setValue(0)]]></text>
+        </script>
+        <description>Toggle Centroid Computation</description>
+      </action>
+    </actions>
+    <text>CENTROID</text>
+    <x>660</x>
+    <y>276</y>
+    <width>118</width>
+    <rules>
+      <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0 == 3">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pv0 != 3">
+          <value>true</value>
+        </exp>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+      </rule>
+    </rules>
+    <scripts>
+      <script file="EmbeddedPy" check_connections="false">
+        <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+chosenImg="loc://"+prefis+"ChosenImg"
+pvChosen=PVUtil.createPV(chosenImg,1000)
+valore_pv =PVUtil.getInt(pvChosen)
+
+
+
+# Controlla il valore della PV e apri il display corrispondente
+if valore_pv == 0:
+   pname=prefis+"Stats1:ComputeCentroid"
+   pv = PVUtil.createPV(pname,1000)
+   enabled =PVUtil.getInt(pv)
+   if enabled == 0:
+   	widget.setPropertyValue("background_color",  [255, 0, 0, 255])
+   else:
+	widget.setPropertyValue("background_color",  [0, 255, 0, 255])
+   
+   #macros = {     "P": "$(DEVICE):",     "R": "$(CAM):", "DATA":"Stats1:Histogram_RBV" ,"TITLE": "Raw Histogram"    }
+   # ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","3",macros )
+elif valore_pv == 1:
+   pname=prefis+"Roi1:Stats1:ComputeCentroid"
+   pv = PVUtil.createPV(pname,1000)
+   enabled =PVUtil.getInt(pv)
+   if enabled == 0:
+   	widget.setPropertyValue("background_color",  [255, 0, 0, 255])
+   else:
+	widget.setPropertyValue("background_color",  [0, 255, 0, 255])
+elif valore_pv==2:
+   pname=prefis+"Proc1:Stats1:ComputeCentroid"
+   pv = PVUtil.createPV(pname,1000)
+   enabled =PVUtil.getInt(pv)
+   if enabled == 0:
+   	widget.setPropertyValue("background_color",  [255, 0, 0, 255])
+   else:
+	widget.setPropertyValue("background_color",  [0, 255, 0, 255])]]></text>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+        <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid</pv_name>
+        <pv_name>$(DEVICE):$(CAM):Roi1:Stats1:ComputeCentroid</pv_name>
+        <pv_name>$(DEVICE):$(CAM):Proc1:Stats1:ComputeCentroid</pv_name>
+      </script>
+    </scripts>
     <tooltip>$(actions)</tooltip>
   </widget>
 </display>

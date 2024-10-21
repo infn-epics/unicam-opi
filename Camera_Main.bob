@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-18 15:02:40 by Alex-->
+<!--Saved on 2024-10-21 17:36:51 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -31,7 +31,7 @@
   <widget type="embedded" version="2.0.0">
     <name>CameraImage</name>
     <file>Camera_ColorImagePanel.bob</file>
-    <x>373</x>
+    <x>370</x>
     <y>85</y>
     <width>800</width>
     <height>560</height>
@@ -79,118 +79,7 @@
     <height>667</height>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Centroid</name>
-    <x>535</x>
-    <y>683</y>
-    <width>220</width>
-    <height>113</height>
-    <background_color>
-      <color red="237" green="236" blue="235">
-      </color>
-    </background_color>
-    <rules>
-      <rule name="VisibilityRule" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==0">
-          <value>false</value>
-        </exp>
-        <exp bool_exp="pv0==1">
-          <value>true</value>
-        </exp>
-        <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid_RBV</pv_name>
-      </rule>
-    </rules>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update</name>
-      <pv_name>$(DEVICE):$(CAM):Stats1:CentroidX_RBV</pv_name>
-      <x>19</x>
-      <y>7</y>
-      <width>55</width>
-      <height>30</height>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_1</name>
-      <pv_name>$(DEVICE):$(CAM):Stats1:CentroidY_RBV</pv_name>
-      <x>117</x>
-      <y>7</y>
-      <width>55</width>
-      <height>30</height>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label</name>
-      <text>X</text>
-      <x>2</x>
-      <y>7</y>
-      <width>25</width>
-      <height>30</height>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_1</name>
-      <text>Y</text>
-      <x>97</x>
-      <y>7</y>
-      <width>25</width>
-      <height>30</height>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_2</name>
-      <pv_name>$(DEVICE):$(CAM):Stats1:SigmaX_RBV</pv_name>
-      <x>19</x>
-      <y>47</y>
-      <width>55</width>
-      <height>30</height>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_3</name>
-      <pv_name>$(DEVICE):$(CAM):Stats1:CentroidX_RBV</pv_name>
-      <x>117</x>
-      <y>47</y>
-      <width>55</width>
-      <height>30</height>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_2</name>
-      <text>W</text>
-      <x>2</x>
-      <y>47</y>
-      <width>25</width>
-      <height>30</height>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>Label_3</name>
-      <text>H</text>
-      <x>97</x>
-      <y>47</y>
-      <width>17</width>
-      <height>17</height>
-    </widget>
-  </widget>
-  <widget type="bool_button" version="2.0.0">
-    <name>Boolean Button_2</name>
-    <pv_name>$(DEVICE):$(CAM):Stats1:ComputeCentroid</pv_name>
-    <x>692</x>
-    <y>652</y>
-    <width>50</width>
-    <actions>
-      <action type="open_display">
-        <file>genicam/NDStats.bob</file>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_4</name>
-    <text>Centroid</text>
-    <x>580</x>
-    <y>650</y>
-    <width>72</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="15.0">
-      </font>
-    </font>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>ROI</name>
+    <name>Selection</name>
     <x>385</x>
     <y>635</y>
     <width>135</width>
@@ -384,12 +273,16 @@ pv.setValue(0)
       </font>
       <rules>
         <rule name="Visibility Rule" prop_id="visible" out_exp="false">
-          <exp bool_exp="pv0 == 1">
+          <exp bool_exp="pv0 != 2 and pv1 == 1">
             <value>true</value>
           </exp>
-          <exp bool_exp="pv0 == 0">
+          <exp bool_exp="pv0 == 2">
             <value>false</value>
           </exp>
+          <exp bool_exp="pv0 != 2 and pv1 == 0">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
           <pv_name>loc://roiVisible</pv_name>
         </rule>
         <rule name="label Rule" prop_id="text" out_exp="false">
@@ -411,7 +304,7 @@ pv.setValue(0)
       <tooltip>$(actions)</tooltip>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Action Button</name>
+      <name>Reset ROI Button</name>
       <actions>
         <action type="execute">
           <script file="EmbeddedPy">
@@ -510,45 +403,5 @@ p_roi_h.setValue(hV)]]></text>
       </rules>
       <tooltip>$(actions)</tooltip>
     </widget>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_1</name>
-    <actions>
-      <action type="open_display">
-        <file>genicam/NDPlot.bob</file>
-        <macros>
-          <P>$(DEVICE):</P>
-          <R>$(CAM):</R>
-          <DATA>Stats1:Histogram_RBV</DATA>
-        </macros>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-    <text>HST</text>
-    <x>775</x>
-    <y>650</y>
-    <width>80</width>
-    <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_3</name>
-    <actions>
-      <action type="open_display">
-        <file>genicam/NDStats.bob</file>
-        <macros>
-          <P>$(DEVICE):</P>
-          <R>$(CAM):Stats1:</R>
-        </macros>
-        <target>window</target>
-        <description>Open Display</description>
-      </action>
-    </actions>
-    <text>TEST</text>
-    <x>790</x>
-    <y>710</y>
-    <width>65</width>
-    <visible>false</visible>
-    <tooltip>$(actions)</tooltip>
   </widget>
 </display>
