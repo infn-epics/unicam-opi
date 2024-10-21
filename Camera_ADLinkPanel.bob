@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-05 23:50:41 by andreamichelotti-->
+<!--Saved on 2024-10-21 11:48:55 by andreamichelotti-->
 <display version="2.0.0">
   <width>1280</width>
   <height>1024</height>
@@ -225,6 +225,70 @@
       <x>25</x>
       <y>285</y>
       <width>220</width>
+      <height>40</height>
+      <font>
+        <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="IO Foreground" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="IO 80K Helium Supply" red="255" green="153" blue="204">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button Template_5</name>
+      <actions execute_as_one="true">
+        <action type="open_display">
+          <file>simDetector.bob</file>
+          <macros>
+            <P>$(DEVICE):$(CAM):</P>
+            <R></R>
+          </macros>
+          <target>tab</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Simulated Cam</text>
+      <x>5</x>
+      <y>345</y>
+      <width>110</width>
+      <height>40</height>
+      <font>
+        <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="IO Foreground" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="IO 80K Helium Supply" red="255" green="153" blue="204">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button Template_7</name>
+      <actions execute_as_one="true">
+        <action type="open_display">
+          <file>simDetectorSetup.bob</file>
+          <macros>
+            <P>$(DEVICE):$(CAM):</P>
+            <R></R>
+          </macros>
+          <target>tab</target>
+          <description>Open Display</description>
+        </action>
+      </actions>
+      <text>Simulated Image</text>
+      <x>135</x>
+      <y>345</y>
+      <width>110</width>
       <height>40</height>
       <font>
         <font name="IO Output 1" family="sans" style="BOLD" size="10.891089108910892">
