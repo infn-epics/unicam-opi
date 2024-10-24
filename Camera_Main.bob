@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-21 17:36:51 by Alex-->
+<!--Saved on 2024-10-24 18:02:45 by Alex-->
 <display version="2.0.0">
   <name>Camera Screen Operator GUI</name>
   <macros>
@@ -80,80 +80,26 @@
   </widget>
   <widget type="group" version="3.0.0">
     <name>Selection</name>
-    <x>385</x>
-    <y>635</y>
-    <width>135</width>
-    <height>165</height>
+    <x>505</x>
+    <y>655</y>
+    <width>275</width>
+    <height>75</height>
     <background_color>
       <color red="237" green="236" blue="235">
       </color>
     </background_color>
-    <widget type="checkbox" version="2.0.0">
-      <name>CheckBoxROI</name>
-      <pv_name>loc://roiVisible(0)</pv_name>
-      <label>Show Selection</label>
-      <y>12</y>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
-      <actions>
-      </actions>
-      <scripts>
-        <script file="EmbeddedPy" check_connections="false">
-          <text><![CDATA[# Embedded python script
-from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
-
-macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
-if macro_device is None:
-        raise Exception("La macro 'DEVICE' non è definita")
-macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
-if macro_cam is None:
-        raise Exception("La macro 'CAM' non è definita")
-prefis=macro_device+':'+macro_cam+":"
-
-
-
-
-pname=prefis+"SizeX_RBV"
-pvx = PVUtil.createPV(pname,1000)
-X_Img = PVUtil.getDouble(pvx)
-
-pname=prefis+"SizeY_RBV"
-pvy=PVUtil.createPV(pname,1000)
-Y_Img=PVUtil.getDouble(pvy)
-
-xV=X_Img / 5
-yV = Y_Img /5
-wV=X_Img/4
-hV=Y_Img/4
-
-val= PVUtil.getInt(pvs[0])
-pv2 = pvs[2]
-pv4 = pvs[4]
-if val==1:
-	pvs[1].setValue(xV)
-	if hasattr(pvs[2], 'setValue'):
-   		 pvs[2].setValue(yV)
-	else:
-    		print("pvs[2] non ha il metodo setValue")
-	pvs[3].setValue(wV)
-	if hasattr(pvs[4], 'setValue'):
-   		 pvs[4].setValue(hV)
-	else:
-    		print("pvs[4] non ha il metodo setValue")
-
-
-]]></text>
-          <pv_name>loc://roiVisible</pv_name>
-          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_x</pv_name>
-          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_y</pv_name>
-          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_w</pv_name>
-          <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_h</pv_name>
-        </script>
-      </scripts>
-    </widget>
+    <rules>
+      <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0 == 0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pv1 == 2">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://roiVisible</pv_name>
+        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+      </rule>
+    </rules>
     <widget type="action_button" version="3.0.0">
       <name>Apply ROI Button</name>
       <actions>
@@ -265,8 +211,8 @@ pv.setValue(0)
         </action>
       </actions>
       <text>APPLY ROI HW</text>
-      <x>2</x>
-      <y>42</y>
+      <x>7</x>
+      <y>7</y>
       <font>
         <font family="Liberation Sans" style="REGULAR" size="12.0">
         </font>
@@ -388,8 +334,8 @@ p_roi_h.setValue(hV)]]></text>
         </action>
       </actions>
       <text>Reset ROI</text>
-      <x>2</x>
-      <y>92</y>
+      <x>127</x>
+      <y>7</y>
       <rules>
         <rule name="visibility rule" prop_id="visible" out_exp="false">
           <exp bool_exp="pv0==1">
@@ -403,5 +349,85 @@ p_roi_h.setValue(hV)]]></text>
       </rules>
       <tooltip>$(actions)</tooltip>
     </widget>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>CheckBoxROI</name>
+    <pv_name>loc://roiVisible(0)</pv_name>
+    <label>Show Selection</label>
+    <x>385</x>
+    <y>645</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <actions>
+    </actions>
+    <scripts>
+      <script file="EmbeddedPy" check_connections="false">
+        <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
+
+macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
+if macro_device is None:
+        raise Exception("La macro 'DEVICE' non è definita")
+macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
+if macro_cam is None:
+        raise Exception("La macro 'CAM' non è definita")
+prefis=macro_device+':'+macro_cam+":"
+
+
+
+
+pname=prefis+"SizeX_RBV"
+pvx = PVUtil.createPV(pname,1000)
+X_Img = PVUtil.getDouble(pvx)
+
+pname=prefis+"SizeY_RBV"
+pvy=PVUtil.createPV(pname,1000)
+Y_Img=PVUtil.getDouble(pvy)
+
+xV=X_Img / 5
+yV = Y_Img /5
+wV=X_Img/4
+hV=Y_Img/4
+
+val= PVUtil.getInt(pvs[0])
+pv2 = pvs[2]
+pv4 = pvs[4]
+if val==1:
+	pvs[1].setValue(xV)
+	if hasattr(pvs[2], 'setValue'):
+   		 pvs[2].setValue(yV)
+	else:
+    		print("pvs[2] non ha il metodo setValue")
+	pvs[3].setValue(wV)
+	if hasattr(pvs[4], 'setValue'):
+   		 pvs[4].setValue(hV)
+	else:
+    		print("pvs[4] non ha il metodo setValue")
+
+
+]]></text>
+        <pv_name>loc://roiVisible</pv_name>
+        <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_x</pv_name>
+        <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_y</pv_name>
+        <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_w</pv_name>
+        <pv_name trigger="false">loc://$(DEVICE):$(CAM):roi_h</pv_name>
+      </script>
+    </scripts>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(DEVICE):$(CAM):Proc1:TIFF1:Capture</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <x>860</x>
+    <y>655</y>
+    <tooltip>$(actions)</tooltip>
   </widget>
 </display>
