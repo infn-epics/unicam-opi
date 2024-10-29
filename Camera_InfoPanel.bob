@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-21 17:04:10 by Alex-->
+<!--Saved on 2024-10-29 16:14:12 by Alex-->
 <display version="2.0.0">
   <width>1280</width>
   <height>1024</height>
@@ -381,74 +381,6 @@
       </border_color>
     </widget>
   </widget>
-  <widget type="checkbox" version="2.0.0">
-    <name>Check Box Template_1</name>
-    <pv_name>$(DEVICE):$(CAM):TriggerMode</pv_name>
-    <label>External Trigger</label>
-    <x>13</x>
-    <y>359</y>
-    <width>148</width>
-    <height>25</height>
-    <font>
-      <font family="Sans" style="REGULAR" size="11.881188118811881">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="IO Foreground" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <actions>
-    </actions>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo_2</name>
-    <pv_name>$(DEVICE):$(CAM):TriggerSource</pv_name>
-    <x>13</x>
-    <y>399</y>
-    <width>135</width>
-    <height>32</height>
-    <font>
-      <font family="Sans" style="REGULAR" size="10.891089108910892">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="IO Foreground" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="IO OutputPV Fg" red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="visibility" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>true</value>
-        </exp>
-        <pv_name>$(DEVICE):$(HW):TriggerMode</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update</name>
-    <pv_name>$(DEVICE):$(CAM):TriggerMode_RBV</pv_name>
-    <x>160</x>
-    <y>405</y>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label Template_6</name>
     <text>X:</text>
@@ -630,8 +562,8 @@ Limits: [320,1000]</tooltip>
   <widget type="label" version="2.0.0">
     <name>Label Template_2</name>
     <text>Camera mode:</text>
-    <x>12</x>
-    <y>470</y>
+    <x>16</x>
+    <y>356</y>
     <width>77</width>
     <height>16</height>
     <font>
@@ -658,8 +590,8 @@ Limits: [320,1000]</tooltip>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_3</name>
     <pv_name>$(DEVICE):$(CAM):DataType_RBV</pv_name>
-    <x>230</x>
-    <y>465</y>
+    <x>234</x>
+    <y>351</y>
     <width>52</width>
     <height>30</height>
     <background_color>
@@ -678,8 +610,8 @@ Limits: [320,1000]</tooltip>
   <widget type="combo" version="2.0.0">
     <name>Combo</name>
     <pv_name>$(DEVICE):$(CAM):DataType</pv_name>
-    <x>137</x>
-    <y>464</y>
+    <x>141</x>
+    <y>350</y>
     <width>89</width>
     <height>32</height>
     <font>
