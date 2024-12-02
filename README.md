@@ -13,10 +13,10 @@ A Screen with some control buttons
 ### The Screen
 The screen section shows the current selected channel from the chosen camera.
 It is possible to change the displayed channel via the "Image Selection" radiobutton group, choosing between:
-RAW  - The output from the camera just as it is
-ROI  - The camera image after a software ROI 
-PROCESSED - The ROI image after various manipulation.
-REFERENCE - A RAW version, in which it's possible to set a reference on the image
+RAW  - The output from the camera just as it is  
+ROI  - The camera image after a software ROI  
+PROCESSED - The ROI image after various manipulation  
+REFERENCE - A RAW version, in which it's possible to set a reference on the image  
 
 The Settings button  will open a different display settings according to the selected channel.
 The Histogram button will open a new window, with the histogram page for the current channel.
@@ -24,21 +24,17 @@ The Histogram button will open a new window, with the histogram page for the cur
 In the PROCESSED output, the button "CENTROID" allows the user to let calculate and show the centroid for the current image 
 Below the screen is present a check box, that shows in the image a selection box used to apply a ROI or if REFERENCE is selected, to apply a reference
 
+## The tabs Container
+The tabs are 4:  
+**Aquire** (the default one) It contains the tools for starting or stopping the camera.  
+the regulation of exposure time and shutter time, the settings for the trigger and some other information  
+**Save** This tab is used to save frames from the camera. It allows to set the path of the saved pictures and to take multiple picture in a row  
+**Camera info**  This tab shows some info about the hardware of the camera  
+**Links**   This tab collects the button links to more specified interfaces for expert users  
 
 
 
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://baltig.infn.it/infn-epics/camera-opi.git
-git branch -M main
-git push -uf origin main
-```
 
 ## Integrate with your tools
 
