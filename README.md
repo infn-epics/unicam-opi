@@ -12,7 +12,7 @@ A Screen with some control buttons
 
 ### The Screen
 The screen section shows the current selected channel from the chosen camera.
-It is possible to change the displayed channel via the "Image Selection" radiobutton group, choosing between:
+It is possible to change the displayed channel via the "Image Selection" radiobutton group, choosing between:  
 **RAW**  - The output from the camera just as it is  
 **ROI**  - The camera image after a software ROI  
 **PROCESSED** - The ROI image after various manipulation  
