@@ -1,12 +1,32 @@
-# Camera Opi
+# Camera bob
+
+Description of the features of the Camera.bob display for General Camera interactions
+
+## General Description 
+This interface allows the user to show the output of a single camera and correctly interact with the ioc of the camera.
+The box in the left top corner, allows users to choose the camera to control.
+The other parts of the interface are basically two:
+
+A tabs Container
+A Screen with some control buttons
+
+### The Screen
+The screen section shows the current selected channel from the chosen camera.
+It is possible to change the displayed channel via the "Image Selection" radiobutton group, choosing between:
+RAW  - The output from the camera just as it is
+ROI  - The camera image after a software ROI 
+PROCESSED - The ROI image after various manipulation.
+REFERENCE - A RAW version, in which it's possible to set a reference on the image
+
+The Settings button  will open a different display settings according to the selected channel.
+The Histogram button will open a new window, with the histogram page for the current channel.
+
+In the PROCESSED output, the button "CENTROID" allows the user to let calculate and show the centroid for the current image 
+Below the screen is present a check box, that shows in the image a selection box used to apply a ROI or if REFERENCE is selected, to apply a reference
 
 
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
 ## Add your files
 
