@@ -41,7 +41,7 @@ The interface relies on several plugin that work at IOC level. Those plugins pro
 graph LR
     Raw --> ROI
     ROI --> Processed
-    Processed --> Overlay
+    Raw --> Overlay
     Raw --> TIFF1
     Raw --> CA1
     Raw --> PVA1
