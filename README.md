@@ -32,6 +32,36 @@ the regulation of exposure time and shutter time, the settings for the trigger a
 **Camera info**  This tab shows some info about the hardware of the camera  
 **Links**   This tab collects the button links to more specified interfaces for expert users  
 
+##Implementation
+The interface relies on several plugin that work at IOC level. Those plugins produce the four channels for the camera image and also the tiff generation
+
+
+
+```mermaid
+graph LR
+    Raw --> ROI
+    ROI --> Processed
+    Processed --> Overlay
+    Raw --> TIFF1
+    Raw --> CA1
+    Raw --> PVA1
+    ROI --> TIFF2
+    ROI --> CA2
+    ROI --> PVA2
+    Processed --> CA3
+    Processed --> PVA3
+    Overlay --> CA4
+    Overlay --> PVA4
+    TIFF1[TIFF]
+    TIFF2[TIFF]
+    CA1[CA]
+    CA2[CA]
+    CA3[CA]
+    CA4[CA]
+    PVA1[PVA]
+    PVA2[PVA]
+    PVA3[PVA]
+    PVA4[PVA]
 
 
 
