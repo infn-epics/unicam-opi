@@ -32,8 +32,8 @@ the regulation of exposure time and shutter time, the settings for the trigger a
 **Camera info**  This tab shows some info about the hardware of the camera  
 **Links**   This tab collects the button links to more specified interfaces for expert users  
 
-##Implementation
-The interface relies on several plugin that work at IOC level. Those plugins produce the four channels for the camera image and also the tiff generation
+##Implementation  
+The interface relies on several plugin that work at IOC level. Those plugins produce the four channels for the camera image and also the tiff generation  
 
 
 
