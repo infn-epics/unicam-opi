@@ -50,10 +50,12 @@ graph LR
     ROI --> PVA2
     Processed --> CA3
     Processed --> PVA3
+    Processed --> TIFF3
     Overlay --> CA4
     Overlay --> PVA4
     TIFF1[TIFF]
     TIFF2[TIFF]
+    TIFF3[TIFF]
     CA1[CA]
     CA2[CA]
     CA3[CA]
