@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-09 13:51:07 by andreamichelotti-->
+<!--Saved on 2024-11-27 11:37:21 by andreamichelotti-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>440</width>
-  <height>350</height>
+  <width>1280</width>
+  <height>1055</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -26,8 +26,8 @@
     <name>Image_2</name>
     <pv_name>$(P):$(R):image1:ArrayData</pv_name>
     <y>31</y>
-    <width>430</width>
-    <height>319</height>
+    <width>1280</width>
+    <height>1024</height>
     <show_toolbar>true</show_toolbar>
     <color_map>
       <name>GRAY</name>
