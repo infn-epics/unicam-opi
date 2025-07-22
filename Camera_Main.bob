@@ -652,40 +652,9 @@ if val==1:
     <width>335</width>
     <height>62</height>
     <scripts>
-      <script file="EmbeddedPy">
-        <text><![CDATA[# Embedded python script
-from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
-
-camera_widget = ScriptUtil.findWidgetByName(widget, 'CameraImage')
-macro_device = camera_widget.getEffectiveMacros().getValue('DEVICE')
-if macro_device is None:
-        raise Exception("La macro 'DEVICE' non è definita")
-macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
-if macro_cam is None:
-        raise Exception("La macro 'CAM' non è definita")
-name = macro_device
-
-if "SPARC" in name.upper():
-    widget.setPropertyValue("visible",True)
-else:
-    widget.setPropertyValue("visible",False)]]></text>
-        <pv_name>$(DEVICE):$(CAM):DetectorState_RBV</pv_name>
-      </script>
+      
     </scripts>
-    <widget type="bool_button" version="2.0.0">
-      <name>Boolean Button_6</name>
-      <pv_name>SPARC:LASER:SHUTTER:DO0</pv_name>
-      <x>7</x>
-      <y>-7</y>
-      <width>140</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_10</name>
-      <pv_name>SPARC:LASER:SHUTTER:DI0_RB</pv_name>
-      <x>169</x>
-      <width>120</width>
-      <height>30</height>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
+    
+    
   </widget>
 </display>
