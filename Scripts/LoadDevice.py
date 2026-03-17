@@ -19,9 +19,10 @@ for dev in device_list:
 
 combo.setItems(names)
 
-#if len(device_list): ## put the first as default
-   # ScriptUtil.getPrimaryPV(combo).write(names[0])
-#    widget.getPropertyValue("macros").add("DEVICE", device_list[0]["P"])
+if len(device_list):  ## put the first as default if nothing selected yet
+    current = PVUtil.getString(pvs[0])
+    if not current or current == "":
+        ScriptUtil.getPrimaryPV(combo).write(names[0])
 
 
 

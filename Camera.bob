@@ -3,6 +3,7 @@
 <display version="2.0.0">
   <name>Camera</name>
   <macros>
+    <DEVICE>NODEVICE</DEVICE>
     <CAM>CAM1</CAM>
     <IMAGE>NDAR1</IMAGE>
     <TIFF>TIFF1</TIFF>
