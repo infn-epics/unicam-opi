@@ -156,47 +156,58 @@ roiH=PVUtil.getInt(p_roi_h)
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 chosenValue=PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 
 
 #SETTINGS
 if chosenValue == 0 or chosenValue == 1:
-	if chosenValue == 1:
-		prefis+="Roi1:"
-	pname=prefis+"SizeX"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiW)
+  if chosenValue == 1:
+    prefis+="Roi1:"
+  pname=prefis+"SizeX"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiW)
 
-	pname=prefis+"SizeY"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiH)
+  pname=prefis+"SizeY"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiH)
 
-	pname=prefis+"MinX"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiX)
+  pname=prefis+"MinX"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiX)
 
-	pname=prefis+"MinY"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiY)
+  pname=prefis+"MinY"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiY)
 elif chosenValue == 3:
-	prefis+="Overlay1:"
-	
-	pname=prefis+"PositionX"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiX)
+  overlayPrefix=prefis+"Overlay1:%d:" % overlayValue
 
-	pname=prefis+"PositionY"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiY)
+  pname=prefis+"Overlay1:EnableCallbacks"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(1)
 
-	pname=prefis+"SizeX"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiW)
+  pname=overlayPrefix+"Use"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(1)
 
-	pname=prefis+"SizeY"
-	pv = PVUtil.createPV(pname,1000)
-	pv.setValue(roiH)
-	pass
+  pname=overlayPrefix+"PositionX"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiX)
+
+  pname=overlayPrefix+"PositionY"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiY)
+
+  pname=overlayPrefix+"SizeX"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiW)
+
+  pname=overlayPrefix+"SizeY"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(roiH)
+  pass
 	
 
 
@@ -239,7 +250,7 @@ pv.setValue(0)
             <value>APPLY ROI SW</value>
           </exp>
           <exp bool_exp="pv0 == 3">
-            <value>APPLY REF</value>
+            <value>APPLY OVERLAY</value>
           </exp>
           <exp bool_exp="pv0 == 2">
             <value>DO NOTHING</value>
@@ -280,6 +291,9 @@ MaxY=PVUtil.getInt(pv)
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 chosenValue=PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 
 
@@ -302,6 +316,23 @@ if chosenValue < 3:
 	pname=prefis+"SizeY"
 	pv = PVUtil.createPV(pname,1000)
 	pv.setValue(MaxY)
+elif chosenValue == 3:
+  overlayPrefix=prefis+"Overlay1:%d:" % overlayValue
+  pname=overlayPrefix+"PositionX"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(0)
+
+  pname=overlayPrefix+"PositionY"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(0)
+
+  pname=overlayPrefix+"SizeX"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(MaxX)
+
+  pname=overlayPrefix+"SizeY"
+    pv = PVUtil.createPV(pname,1000)
+    pv.setValue(MaxY)
 else:
 	pass
 

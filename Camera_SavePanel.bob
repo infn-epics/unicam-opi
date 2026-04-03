@@ -51,6 +51,9 @@ tmpPv=prefis+"ArrayCounter_RBV" #serve per aggiornare il display in caso di vari
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 valore_pv =PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 added=""
 if valore_pv  == 1:
@@ -58,7 +61,7 @@ if valore_pv  == 1:
 elif valore_pv  == 2:
 	added="Proc1:"
 elif valore_pv == 3:
-	added="Overlay1:"
+  added="Overlay%d:" % overlayValue
 
 prefis=macro_device+':'+macro_cam+":"+added
 
@@ -109,8 +112,9 @@ tmpwidget.setPropertyValue('pv_name', tmpPv)
 tmpwidget.setPropertyValue('pv_name', prefis+"TIFF1:WriteMessage")
 
 tmpwidget = ScriptUtil.findWidgetByName(widget,"Label_Capture") 
-tmpwidget.setPropertyValue('text', "Capture "+added)]]></text>
-        <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+tmpwidget.setPropertyValue('text', "Capture "+(added[:-1] if added.endswith(":") else added or "Raw"))]]></text>
+  <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+  <pv_name>loc://$(DEVICE):$(CAM):ChosenOverlay</pv_name>
       </script>
     </scripts>
     <widget type="group" version="3.0.0">
@@ -304,6 +308,9 @@ prefis=macro_device+':'+macro_cam+":"
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 valore_pv =PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 added=""
 if valore_pv  == 1:
@@ -311,7 +318,7 @@ if valore_pv  == 1:
 elif valore_pv  == 2:
 	added="Proc1:"
 elif valore_pv == 3:
-	added="Overlay1:"
+  added="Overlay%d:" % overlayValue
 prefis=macro_device+':'+macro_cam+":"+added
 
 pname=prefis+"TIFF1:Capture"
@@ -360,6 +367,9 @@ prefis=macro_device+':'+macro_cam+":"
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 valore_pv =PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 added=""
 if valore_pv  == 1:
@@ -367,7 +377,7 @@ if valore_pv  == 1:
 elif valore_pv  == 2:
 	added="Proc1:"
 elif valore_pv == 3:
-	added="Overlay1:"
+  added="Overlay%d:" % overlayValue
 prefis=macro_device+':'+macro_cam+":"+added
 
 pname=prefis+"TIFF1:Capture"

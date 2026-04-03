@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-10-29 17:44:17 by Alex-->
 <display version="2.0.0">
   <height>548</height>
   <background_color>
@@ -59,6 +58,9 @@ prefis=macro_device+':'+macro_cam+":"
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 valore_pv =PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 added=""
 if valore_pv == 0:
 	pass;
@@ -172,8 +174,8 @@ if valore_pv == 2:
     <text>Image Display</text>
     <x>12</x>
     <y>12</y>
-    <width>74</width>
-    <height>17</height>
+    <width>70</width>
+    <height>15</height>
     <font>
       <font name="IO Label 1" family="sans" style="REGULAR" size="11.881188118811881">
       </font>
@@ -200,7 +202,7 @@ if valore_pv == 2:
     <x>655</x>
     <y>44</y>
     <width>136</width>
-    <height>126</height>
+    <height>286</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="12.0">
       </font>
@@ -209,12 +211,28 @@ if valore_pv == 2:
       <color red="237" green="236" blue="235">
       </color>
     </background_color>
+    <widget type="label" version="2.0.0">
+      <name>Source Label</name>
+      <text>Display Source</text>
+      <x>8</x>
+      <y>6</y>
+      <width>115</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="30" green="60" blue="110">
+        </color>
+      </foreground_color>
+    </widget>
     <widget type="radio" version="2.0.0">
       <name>RadioButtonSource</name>
-      <pv_name>loc://$(DEVICE):$(CAM):ChosenImg(0)</pv_name>
-      <y>3</y>
+      <pv_name>loc://$(DEVICE):$(CAM):ChosenImg(3)</pv_name>
+      <x>8</x>
+      <y>28</y>
       <width>108</width>
-      <height>95</height>
+      <height>88</height>
       <font>
         <font family="Liberation Sans" style="REGULAR" size="12.0">
         </font>
@@ -232,6 +250,9 @@ macro_cam=camera_widget.getEffectiveMacros().getValue("CAM")
 if macro_cam is None:
         raise Exception("La macro 'CAM' non è definita")
 prefis=macro_device+':'+macro_cam+":"
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 value=PVUtil.getInt(pvs[0])
 pvToSet=""
 
@@ -245,7 +266,7 @@ elif value == 2:
      pvToSet="pva://"+prefis+"PROC:OUTPUT"
    
 elif value == 3:
-     pvToSet="pva://"+prefis+"OVERLAY1:OUTPUT"
+	pvToSet="pva://%sOVERLAY%d:OUTPUT" % (prefis, overlayValue)
    
 
 displ = ScriptUtil.findWidgetByName(widget, "VImage")
@@ -257,13 +278,74 @@ else:
 		displ.setPropertyValue('pv_name',pvToSet )
 		#print 'OKKK']]></text>
           <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenOverlay</pv_name>
         </script>
       </scripts>
       <items>
         <item>Raw</item>
         <item>ROI</item>
         <item>Processed</item>
-        <item>Reference</item>
+        <item>Overlay</item>
+      </items>
+      <items_from_pv>false</items_from_pv>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Overlay Label</name>
+      <text>Overlay Slot</text>
+      <x>8</x>
+      <y>126</y>
+      <width>115</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="30" green="60" blue="110">
+        </color>
+      </foreground_color>
+      <rules>
+        <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0 == 3">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="pv0 != 3">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="radio" version="2.0.0">
+      <name>RadioButtonOverlay</name>
+      <pv_name>loc://$(DEVICE):$(CAM):ChosenOverlay(0)</pv_name>
+      <x>8</x>
+      <y>148</y>
+      <width>108</width>
+      <height>126</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <rules>
+        <rule name="Visibility Rule" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0 == 3">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="pv0 != 3">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://$(DEVICE):$(CAM):ChosenImg</pv_name>
+        </rule>
+      </rules>
+      <items>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
       </items>
       <items_from_pv>false</items_from_pv>
     </widget>
@@ -272,6 +354,7 @@ else:
     <name>Setting Button</name>
     <actions>
       <action type="execute">
+        <description>Execute Script</description>
         <script file="EmbeddedPy">
           <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
 camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
@@ -285,6 +368,9 @@ prefis=macro_device+':'+macro_cam+":"
 chosenImg="loc://"+prefis+"ChosenImg"
 pvChosen=PVUtil.createPV(chosenImg,1000)
 valore_pv =PVUtil.getInt(pvChosen)
+chosenOverlay="loc://"+prefis+"ChosenOverlay"
+pvOverlay=PVUtil.createPV(chosenOverlay,1000)
+overlayValue=PVUtil.getInt(pvOverlay) + 1
 
 
 # Controlla il valore della PV e apri il display corrispondente
@@ -298,20 +384,19 @@ elif valore_pv == 2:
     macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:"     }
     ScriptUtil.openDisplay(widget, "genicam/NDProcess.bob","3",macros )
 elif valore_pv == 3:
-     macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay1:"      }
-     ScriptUtil.openDisplay(widget, "genicam/NDOverlayN.bob","3",macros )
+    macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay1:%d:" % overlayValue      }
+    ScriptUtil.openDisplay(widget, "genicam/NDOverlayN.bob","3",macros )
 else:
     print 'out value'
     # Valore non previsto, puoi gestire il caso di default
     #ScriptUtil.openDisplay(widget, "path/to/default_display.bob")
 ]]></text>
         </script>
-        <description>Execute Script</description>
       </action>
     </actions>
     <text>Settings</text>
     <x>660</x>
-    <y>186</y>
+    <y>338</y>
     <width>119</width>
     <tooltip>$(actions)</tooltip>
   </widget>
@@ -319,6 +404,7 @@ else:
     <name>Histogram Button</name>
     <actions execute_as_one="true">
       <action type="execute">
+        <description>Execute Script</description>
         <script file="EmbeddedPy">
           <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
 camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
@@ -345,11 +431,11 @@ if valore_pv == 0:
     macros = {     "P": "$(DEVICE):",     "R": "$(CAM):", "DATA":"Stats1:Histogram_RBV" ,"TITLE": "Raw Histogram"    }
     ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","WINDOW",macros )
 elif valore_pv == 1:
-    pname=prefis+"Roi1:Stats1:ComputeHistogram"
-    pv = PVUtil.createPV(pname,1000)
-    pv.setValue(1)
-    macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Roi1:" , "DATA":"Stats1:Histogram_RBV"  ,"TITLE": "ROI Histogram"    }
-    ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","WINDOW",macros )
+  pname=prefis+"Roi1:Stats1:ComputeHistogram"
+  pv = PVUtil.createPV(pname,1000)
+  pv.setValue(1)
+  macros = {     "P": "$(DEVICE):",     "R": "$(CAM):Roi1:" , "DATA":"Stats1:Histogram_RBV"  ,"TITLE": "ROI Histogram"    }
+  ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","WINDOW",macros )
 elif valore_pv == 2:
     pname=prefis+"Proc1:Stats1:ComputeHistogram"
     pv = PVUtil.createPV(pname,1000)
@@ -357,18 +443,17 @@ elif valore_pv == 2:
     macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:"  ,"DATA":"Stats1:Histogram_RBV"  ,"TITLE": "Processed Histogram"    }
     ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","WINDOW",macros )
 elif valore_pv == 3:
-      pass
-     #macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay1:"  ,"DATA":"Stats1:Histogram_RBV"    }
-     #ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","4",macros )
+  pass
+  #macros = {      "P": "$(DEVICE):",      "R": "$(CAM):Overlay%d:" % overlayValue  ,"DATA":"Stats1:Histogram_RBV"    }
+  #ScriptUtil.openDisplay(widget, "genicam/NDPlot.bob","4",macros )
 else:
     print 'out value']]></text>
         </script>
-        <description>Execute Script</description>
       </action>
     </actions>
     <text>Histogram</text>
     <x>660</x>
-    <y>228</y>
+    <y>380</y>
     <width>119</width>
     <rules>
       <rule name="Visibility Rule" prop_id="visible" out_exp="false">
@@ -387,6 +472,7 @@ else:
     <name>CentroidButton</name>
     <actions>
       <action type="execute">
+        <description>Open Specific Display</description>
         <script file="EmbeddedPy">
           <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
 camera_widget = ScriptUtil.findWidgetByName(widget, 'VImage')
@@ -413,9 +499,9 @@ elif valore_pv == 2:
     macros = {    "P": "$(DEVICE):",     "R": "$(CAM):Proc1:Stats1:"     }
     ScriptUtil.openDisplay(widget, "genicam/NDStats.bob","3",macros )]]></text>
         </script>
-        <description>Open Specific Display</description>
       </action>
       <action type="execute">
+        <description>Toggle Centroid Computation</description>
         <script file="EmbeddedPy">
           <text><![CDATA[# Embedded python script
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
@@ -448,12 +534,11 @@ if current == 0:
 else:
         pv.setValue(0)]]></text>
         </script>
-        <description>Toggle Centroid Computation</description>
       </action>
     </actions>
     <text>CENTROID</text>
     <x>660</x>
-    <y>276</y>
+    <y>422</y>
     <width>118</width>
     <rules>
       <rule name="Visibility Rule" prop_id="visible" out_exp="false">
